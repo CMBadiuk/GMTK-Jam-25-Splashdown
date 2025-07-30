@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://hxif7nlakeck"]
+
+[ext_resource type="Script" uid="uid://byjjeaob6vx6k" path="res://track_chunk.gd" id="1_i7b0t"]
+
+[sub_resource type="Curve2D" id="Curve2D_7wqdt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1024, 0)
+}
+point_count = 2
+
+[node name="TrackChunkStraight" type="Path2D"]
+curve = SubResource("Curve2D_7wqdt")
+script = ExtResource("1_i7b0t")
+metadata/_edit_group_ = true
+
+[node name="Line2D" type="Line2D" parent="."]
+default_color = Color(0.312744, 0.66806, 0.91752, 1)

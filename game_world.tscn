@@ -1,0 +1,15 @@
+[gd_scene load_steps=7 format=3 uid="uid://jcx3o1lis68s"]
+
+[ext_resource type="Script" uid="uid://cbrw3p14xxaj1" path="res://track_manager.gd" id="1_hly68"]
+[ext_resource type="PackedScene" uid="uid://dfa8x0ea83mji" path="res://track_chunk_drop.tscn" id="2_e3xe6"]
+[ext_resource type="PackedScene" uid="uid://8wvxj5lq3cg8" path="res://track_chunk_hill.tscn" id="3_mcbma"]
+[ext_resource type="PackedScene" uid="uid://b8llhqgem2wg1" path="res://track_chunk_loop.tscn" id="4_ik71a"]
+[ext_resource type="PackedScene" uid="uid://hxif7nlakeck" path="res://track_chunk_straight.tscn" id="5_e7o6u"]
+[ext_resource type="PackedScene" uid="uid://b862bxwj0cjbu" path="res://coaster.tscn" id="6_ik71a"]
+
+[node name="GameWorld" type="Node2D"]
+
+[node name="TrackManager" type="Node" parent="."]
+script = ExtResource("1_hly68")
+track_chunks = Array[PackedScene]([ExtResource("2_e3xe6"), ExtResource("3_mcbma"), ExtResource("4_ik71a"), ExtResource("5_e7o6u")])
+coaster_scene = ExtResource("6_ik71a")

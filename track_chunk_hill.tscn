@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://8wvxj5lq3cg8"]
+
+[ext_resource type="Script" uid="uid://byjjeaob6vx6k" path="res://track_chunk.gd" id="1_ql48i"]
+
+[sub_resource type="Curve2D" id="Curve2D_cccw3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 192, -64, 0, 0, 0, 0, 320, -192, 0, 0, 0, 0, 640, -928, 0, 0, 0, 0, 704, -992, 0, 0, 0, 0, 832, -1024, 0, 0, 0, 0, 1024, -1024)
+}
+point_count = 7
+
+[node name="TrackChunkHill" type="Path2D"]
+curve = SubResource("Curve2D_cccw3")
+script = ExtResource("1_ql48i")
+
+[node name="Line2D" type="Line2D" parent="."]
