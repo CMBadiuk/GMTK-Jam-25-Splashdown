@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cr75xubf3ymsk"]
+[gd_scene load_steps=6 format=3 uid="uid://cr75xubf3ymsk"]
 
 [ext_resource type="PackedScene" uid="uid://ckwn072cvvxnx" path="res://player.tscn" id="1_2dftf"]
 [ext_resource type="PackedScene" uid="uid://crseh7g7s6ifg" path="res://river_current.tscn" id="2_bcbcq"]
+[ext_resource type="PackedScene" uid="uid://p7acrgel14o6" path="res://chaser.tscn" id="3_bcbcq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dftf"]
 size = Vector2(1889, 80)
@@ -63,3 +64,6 @@ debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="ChaserNavRegion" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_2dftf")
+
+[node name="ChaserBody" parent="." instance=ExtResource("3_bcbcq")]
+position = Vector2(440, -144)
