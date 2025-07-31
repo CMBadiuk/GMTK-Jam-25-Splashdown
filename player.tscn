@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bli4oonky3suq"]
+[gd_scene load_steps=5 format=3 uid="uid://ckwn072cvvxnx"]
 
 [ext_resource type="Texture2D" uid="uid://xfkud3diitvt" path="res://icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://c7r8qm2lji5hn" path="res://player.gd" id="1_onrkg"]
@@ -21,6 +21,7 @@ shape = SubResource("CircleShape2D_onrkg")
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["player"]]
 zoom = Vector2(0.65, 0.65)
+position_smoothing_enabled = true
 
 [node name="Muzzle" type="Marker2D" parent="."]
 position = Vector2(72, 0)
