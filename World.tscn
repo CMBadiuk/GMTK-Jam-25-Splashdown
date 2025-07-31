@@ -14,7 +14,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(88, -240, 1976, -240, 3
 [node name="World" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_2dftf")]
-position = Vector2(272, 0)
+position = Vector2(432, 2)
 
 [node name="RiverCurrent" parent="." instance=ExtResource("2_bcbcq")]
 position = Vector2(1112, 16)

@@ -1,14 +1,114 @@
 [gd_scene load_steps=5 format=3 uid="uid://ckwn072cvvxnx"]
 
 [ext_resource type="Texture2D" uid="uid://xfkud3diitvt" path="res://icon.svg" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://c7r8qm2lji5hn" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://ofsv5lr2t6pg" path="res://water_droplet.tscn" id="2_i3pqv"]
+
+[sub_resource type="GDScript" id="GDScript_onrkg"]
+script/source = "extends CharacterBody2D
+
+# Enum to define control schemes
+enum ControlScheme { MOUSE_KB, CONTROLLER }
+
+# Strength of the player's push, editable in the Inspector
+@export var move_force: float = 500.0
+# This adds drag to the player
+@export var friction: float = 0.95
+# Reference to water droplet scene
+@export var water_droplet_scene: PackedScene
+
+var can_shoot:= true
+var active_scheme: ControlScheme = ControlScheme.MOUSE_KB
+var last_controller_aim := Vector2.RIGHT # Default aim for controller
+
+func _unhandled_input(event: InputEvent) -> void:
+	# Runs whenever there's an input event, used to detect last used input device
+	if event is InputEventMouseMotion:
+		active_scheme = ControlScheme.MOUSE_KB
+	elif  event is InputEventJoypadMotion or event is InputEventJoypadButton:
+		active_scheme = ControlScheme.CONTROLLER
+		print(\"Controller input detected\")
+
+func _process(delta: float) -> void:
+	# Handle aiming and check for shooting input here
+	aim()
+	if Input.is_action_pressed(\"Fire\") and can_shoot:
+		shoot()
+
+
+func _physics_process(delta: float) -> void:
+	print(\"Physics running...\") # debug statement
+	
+	# Get movement input direction
+	var input_direction := Input.get_vector(\"Move_Left\", \"Move_Right\", \"Move_Up\", \"Move_Down\")
+	
+	print(\"Input:\", input_direction) # debug statement
+	
+	# If player is providing input, apply a force
+	if input_direction != Vector2.ZERO:
+		velocity += input_direction * move_force * delta
+	# Apply friction to velocity
+	velocity *= friction
+
+	# Move player based on physics inputs acting on it
+	move_and_slide()
+
+func aim() -> void:
+	# This function routes to appropriate aim logic for control scheme
+	match active_scheme:
+		ControlScheme.MOUSE_KB:
+			aim_with_mouse()
+		ControlScheme.CONTROLLER:
+			aim_with_controller() # Currently not switching schemes properly. Figure this out later if at all
+
+func aim_with_mouse() -> void:
+	# Look at the global mouse position.
+	look_at(get_global_mouse_position())
+
+func aim_with_controller() -> void:
+	# Get input from the controller's right stick.
+	var aim_direction := Input.get_vector(\"Contr_Aim_Left\", \"Contr_Aim_Right\", \"Contr_Aim_Up\", \"Contr_Aim_Down\")
+
+	# We only update the rotation if the stick is actively being pushed.
+	# This prevents the player from snapping back to a default rotation.
+	if aim_direction != Vector2.ZERO:
+		rotation = aim_direction.angle()
+		last_controller_aim = aim_direction # Store the last direction
+	# If the stick is neutral, the player continues facing the last known direction
+
+func shoot() -> void:
+	# This function handles firing a projectile.
+	# First, check if the scene has been assigned in the editor.
+	if not water_droplet_scene:
+		print(\"Water droplet scene not set on player!\")
+		return
+		
+	# Set can_shoot to false, start cooldown timer
+	can_shoot = false
+	$FireRateTimer.start()
+
+	# Create a new instance of our water droplet, parent it to world root
+	var droplet = water_droplet_scene.instantiate()
+	get_tree().root.add_child(droplet)
+
+	# Position the new droplet at the Muzzle's global position and rotation
+	var muzzle = $Muzzle
+	droplet.global_transform = muzzle.global_transform
+	
+	# If using a controller and the aim stick is neutral, we need to ensure the projectile still fires in the correct direction
+	if active_scheme == ControlScheme.CONTROLLER:
+		droplet.rotation = last_controller_aim.angle()
+
+
+func _on_fire_rate_timer_timeout() -> void:
+	# Calls when FireRateTimer finishes
+	can_shoot = true
+"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 64.0
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_onrkg")
+script = SubResource("GDScript_onrkg")
 water_droplet_scene = ExtResource("2_i3pqv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -19,6 +119,7 @@ shape = SubResource("CircleShape2D_onrkg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.65, 0.65)
+position_smoothing_enabled = true
 
 [node name="Muzzle" type="Marker2D" parent="."]
 position = Vector2(72, 0)
