@@ -9,8 +9,6 @@ func _physics_process(delta: float) -> void:
 	
 func _on_body_entered(body: Node2D) -> void:
 	# Fired when physics body is hit. Can have damage logic later
-	if body.is_in_group("enemy"):
-		body.take_damage(1)
 	queue_free() # Destroys the droplet instance
 	
 func _on_timer_timeout() -> void:
