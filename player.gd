@@ -18,8 +18,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	# Runs whenever there's an input event, used to detect last used input device
 	if event is InputEventMouseMotion:
 		active_scheme = ControlScheme.MOUSE_KB
-	elif event is InputEventJoypadMotion or event is InputEventJoypadButton:
+	elif  event is InputEventJoypadMotion or event is InputEventJoypadButton:
 		active_scheme = ControlScheme.CONTROLLER
+		print("Controller input detected")
 
 func _process(delta: float) -> void:
 	# Handle aiming and check for shooting input here
@@ -54,7 +55,7 @@ func aim_with_mouse() -> void:
 
 func aim_with_controller() -> void:
 	# Get input from the controller's right stick.
-	var aim_direction := Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
+	var aim_direction := Input.get_vector("Contr_Aim_Left", "Contr_Aim_Right", "Contr_Aim_Up", "Contr_Aim_Down")
 
 	# We only update the rotation if the stick is actively being pushed.
 	# This prevents the player from snapping back to a default rotation.

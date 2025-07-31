@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://p7acrgel14o6"]
+
+[ext_resource type="Script" uid="uid://ddg8bbq20fumv" path="res://chaser.gd" id="1_7nv7r"]
+[ext_resource type="Texture2D" uid="uid://xfkud3diitvt" path="res://icon.svg" id="1_w318g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7nv7r"]
+radius = 64.4981
+
+[node name="ChaserBody" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_7nv7r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("1_w318g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7nv7r")

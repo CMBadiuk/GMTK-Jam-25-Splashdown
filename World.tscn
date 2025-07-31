@@ -1,14 +1,65 @@
-[gd_scene load_steps=3 format=3 uid="uid://cr75xubf3ymsk"]
+[gd_scene load_steps=5 format=3 uid="uid://cr75xubf3ymsk"]
 
 [ext_resource type="PackedScene" uid="uid://ckwn072cvvxnx" path="res://player.tscn" id="1_2dftf"]
 [ext_resource type="PackedScene" uid="uid://crseh7g7s6ifg" path="res://river_current.tscn" id="2_bcbcq"]
 
-[node name="Node" type="Node"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2dftf"]
+size = Vector2(1889, 80)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_2dftf"]
+vertices = PackedVector2Array(3197.42, -1058.15, 3474.02, -658.609, 2124.94, 254, 1979.08, -230, 98, 254, 98, -230)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(88, -240, 1976, -240, 3200, -1072, 3488, -656, 2128, 264, 88, 264)])
+
+[node name="World" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_2dftf")]
-move_force = 500.0
-friction = 0.95
+position = Vector2(272, 0)
 
 [node name="RiverCurrent" parent="." instance=ExtResource("2_bcbcq")]
 position = Vector2(1112, 16)
+
+[node name="RiverCurrent2" parent="." instance=ExtResource("2_bcbcq")]
+position = Vector2(2664, -400)
+rotation = -0.597879
+scale = Vector2(0.80021, 1)
 current_direction = Vector2(1, -0.5)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1032, -280)
+shape = SubResource("RectangleShape2D_2dftf")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-8, 592)
+scale = Vector2(1.10122, 1.00696)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(1032, -280)
+shape = SubResource("RectangleShape2D_2dftf")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(2048, -6.10352e-05)
+rotation = -0.595204
+scale = Vector2(0.795758, 1.00014)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(1032, -280)
+shape = SubResource("RectangleShape2D_2dftf")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(2240, 584)
+rotation = -0.595204
+scale = Vector2(0.874901, 1.01209)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(1032, -280)
+shape = SubResource("RectangleShape2D_2dftf")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="ChaserNavRegion" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_2dftf")
