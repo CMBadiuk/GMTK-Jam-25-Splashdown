@@ -8,10 +8,14 @@ enum ControlScheme { MOUSE_KB, CONTROLLER }
 @export var friction: float = 0.95
 # Reference to water droplet scene
 @export var water_droplet_scene: PackedScene
+@export var health: int = 5
 
 var can_shoot:= true
 var active_scheme: ControlScheme = ControlScheme.MOUSE_KB
 var last_controller_aim := Vector2.RIGHT # Default aim for controller
+
+func _ready():
+	$DamageFlashTimer.timeout.connect(_on_damage_flash_timer_timeout)
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Runs whenever there's an input event, used to detect last used input device
@@ -90,6 +94,19 @@ func shoot() -> void:
 	# If using a controller and the aim stick is neutral, we need to ensure the projectile still fires in the correct direction
 	if active_scheme == ControlScheme.CONTROLLER:
 		droplet.rotation = last_controller_aim.angle()
+		
+func take_damage(amount: int):
+	health -= amount
+	print("Player took ", amount, " damage! Health is now ", health)
+	$Sprite2D.modulate = Color.RED
+	$DamageFlashTimer.start()
+	
+	if health <= 0:
+		print("GAME OVER")
+		queue_free()
+		
+func _on_damage_flash_timer_timeout():
+	$Sprite2D.modulate = Color.WHITE
 
 
 func _on_fire_rate_timer_timeout() -> void:
