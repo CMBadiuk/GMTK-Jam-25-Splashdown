@@ -1,5 +1,4 @@
 extends CharacterBody2D
-
 # Enum to define control schemes
 enum ControlScheme { MOUSE_KB, CONTROLLER }
 
@@ -9,14 +8,10 @@ enum ControlScheme { MOUSE_KB, CONTROLLER }
 @export var friction: float = 0.95
 # Reference to water droplet scene
 @export var water_droplet_scene: PackedScene
-@export var health: int = 5
 
 var can_shoot:= true
 var active_scheme: ControlScheme = ControlScheme.MOUSE_KB
 var last_controller_aim := Vector2.RIGHT # Default aim for controller
-
-func _ready():
-	$DamageFlashTimer.timeout.connect(_on_damage_flash_timer_timeout)
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Runs whenever there's an input event, used to detect last used input device
@@ -32,10 +27,15 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("Fire") and can_shoot:
 		shoot()
 
+
 func _physics_process(delta: float) -> void:
+	print("Physics running...") # debug statement
+	
 	# Get movement input direction
 	var input_direction := Input.get_vector("Move_Left", "Move_Right", "Move_Up", "Move_Down")
-
+	
+	print("Input:", input_direction) # debug statement
+	
 	# If player is providing input, apply a force
 	if input_direction != Vector2.ZERO:
 		velocity += input_direction * move_force * delta
@@ -90,19 +90,6 @@ func shoot() -> void:
 	# If using a controller and the aim stick is neutral, we need to ensure the projectile still fires in the correct direction
 	if active_scheme == ControlScheme.CONTROLLER:
 		droplet.rotation = last_controller_aim.angle()
-		
-func take_damage(amount: int):
-	health -= amount
-	print("Player took ", amount, " damage! Health is now ", health)
-	$Sprite2D.modulate = Color.RED
-	$DamageFlashTimer.start()
-	
-	if health <= 0:
-		print("GAME OVER")
-		queue_free()
-		
-func _on_damage_flash_timer_timeout():
-	$Sprite2D.modulate = Color.WHITE
 
 
 func _on_fire_rate_timer_timeout() -> void:
