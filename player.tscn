@@ -7,17 +7,19 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 64.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 15
 script = ExtResource("1_onrkg")
 water_droplet_scene = ExtResource("2_i3pqv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_4flbx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 shape = SubResource("CircleShape2D_onrkg")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." groups=["player"]]
 zoom = Vector2(0.65, 0.65)
 
 [node name="Muzzle" type="Marker2D" parent="."]
@@ -26,5 +28,7 @@ position = Vector2(72, 0)
 [node name="FireRateTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="DamageFlashTimer" type="Timer" parent="."]
 
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
