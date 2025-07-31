@@ -1,0 +1,92 @@
+extends CharacterBody2D
+
+# Enum to define control schemes
+enum ControlScheme { MOUSE_KB, CONTROLLER }
+
+# Strength of the player's push, editable in the Inspector
+@export var move_force: float = 500.0
+# This adds drag to the player
+@export var friction: float = 0.95
+# Reference to water droplet scene
+@export var water_droplet_scene: PackedScene
+
+var can_shoot:= true
+var active_scheme: ControlScheme = ControlScheme.MOUSE_KB
+var last_controller_aim := Vector2.RIGHT # Default aim for controller
+
+func _unhandled_input(event: InputEvent) -> void:
+	# Runs whenever there's an input event, used to detect last used input device
+	if event is InputEventMouseMotion:
+		active_scheme = ControlScheme.MOUSE_KB
+	elif event is InputEventJoypadMotion or event is InputEventJoypadButton:
+		active_scheme = ControlScheme.CONTROLLER
+
+func _process(delta: float) -> void:
+	# Handle aiming and check for shooting input here
+	aim()
+	if Input.is_action_pressed("Fire") and can_shoot:
+		shoot()
+
+func _physics_process(delta: float) -> void:
+	# Get movement input direction
+	var input_direction := Input.get_vector("Move_Left", "Move_Right", "Move_Up", "Move_Down")
+
+	# If player is providing input, apply a force
+	if input_direction != Vector2.ZERO:
+		velocity += input_direction * move_force * delta
+	# Apply friction to velocity
+	velocity *= friction
+
+	# Move player based on physics inputs acting on it
+	move_and_slide()
+
+func aim() -> void:
+	# This function routes to appropriate aim logic for control scheme
+	match active_scheme:
+		ControlScheme.MOUSE_KB:
+			aim_with_mouse()
+		ControlScheme.CONTROLLER:
+			aim_with_controller() # Currently not switching schemes properly. Figure this out later if at all
+
+func aim_with_mouse() -> void:
+	# Look at the global mouse position.
+	look_at(get_global_mouse_position())
+
+func aim_with_controller() -> void:
+	# Get input from the controller's right stick.
+	var aim_direction := Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
+
+	# We only update the rotation if the stick is actively being pushed.
+	# This prevents the player from snapping back to a default rotation.
+	if aim_direction != Vector2.ZERO:
+		rotation = aim_direction.angle()
+		last_controller_aim = aim_direction # Store the last direction
+	# If the stick is neutral, the player continues facing the last known direction
+
+func shoot() -> void:
+	# This function handles firing a projectile.
+	# First, check if the scene has been assigned in the editor.
+	if not water_droplet_scene:
+		print("Water droplet scene not set on player!")
+		return
+		
+	# Set can_shoot to false, start cooldown timer
+	can_shoot = false
+	$FireRateTimer.start()
+
+	# Create a new instance of our water droplet, parent it to world root
+	var droplet = water_droplet_scene.instantiate()
+	get_tree().root.add_child(droplet)
+
+	# Position the new droplet at the Muzzle's global position and rotation
+	var muzzle = $Muzzle
+	droplet.global_transform = muzzle.global_transform
+	
+	# If using a controller and the aim stick is neutral, we need to ensure the projectile still fires in the correct direction
+	if active_scheme == ControlScheme.CONTROLLER:
+		droplet.rotation = last_controller_aim.angle()
+
+
+func _on_fire_rate_timer_timeout() -> void:
+	# Calls when FireRateTimer finishes
+	can_shoot = true

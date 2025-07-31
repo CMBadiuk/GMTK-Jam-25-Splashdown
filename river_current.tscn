@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://crseh7g7s6ifg"]
+
+[ext_resource type="Script" uid="uid://b0jv7hcbsev3e" path="res://river_current.gd" id="1_arvo3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_unxsi"]
+size = Vector2(2048, 512)
+
+[node name="RiverCurrent" type="Area2D"]
+script = ExtResource("1_arvo3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_unxsi")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

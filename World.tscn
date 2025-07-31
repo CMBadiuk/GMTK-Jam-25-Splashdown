@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cr75xubf3ymsk"]
+
+[ext_resource type="PackedScene" uid="uid://ckwn072cvvxnx" path="res://player.tscn" id="1_2dftf"]
+[ext_resource type="PackedScene" uid="uid://crseh7g7s6ifg" path="res://river_current.tscn" id="2_bcbcq"]
+
+[node name="Node" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_2dftf")]
+move_force = 500.0
+friction = 0.95
+
+[node name="RiverCurrent" parent="." instance=ExtResource("2_bcbcq")]
+position = Vector2(1112, 16)
+current_direction = Vector2(1, -0.5)
