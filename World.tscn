@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cr75xubf3ymsk"]
+[gd_scene load_steps=7 format=3 uid="uid://cr75xubf3ymsk"]
 
 [ext_resource type="PackedScene" uid="uid://ckwn072cvvxnx" path="res://player.tscn" id="1_2dftf"]
 [ext_resource type="PackedScene" uid="uid://crseh7g7s6ifg" path="res://river_current.tscn" id="2_bcbcq"]
 [ext_resource type="PackedScene" uid="uid://p7acrgel14o6" path="res://chaser.tscn" id="3_bcbcq"]
-[ext_resource type="PackedScene" uid="uid://cy58tub4muu02" path="res://wave_counter.tscn" id="4_js7pq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dftf"]
 size = Vector2(1905.21, 79.6044)
@@ -21,7 +20,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(251, -214, 1961, -230, 
 [node name="World" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_2dftf")]
-position = Vector2(1093, 12)
+position = Vector2(-709, -1037)
 
 [node name="RiverCurrents" type="Node" parent="."]
 
@@ -206,11 +205,8 @@ position = Vector2(0, 10)
 navigation_polygon = SubResource("NavigationPolygon_2dftf")
 
 [node name="ChaserBody" parent="." instance=ExtResource("3_bcbcq")]
+visible = false
 position = Vector2(440, -144)
 
 [node name="ChaserFullNavRegion" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_bcbcq")
-
-[node name="Node2D" parent="." instance=ExtResource("4_js7pq")]
-position = Vector2(1699, 2)
-scale = Vector2(9.16, 17.16)
