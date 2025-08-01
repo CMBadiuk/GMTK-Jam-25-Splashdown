@@ -27,3 +27,12 @@ func _on_body_exited(body: Node2D) -> void:
 	# Remove physics body automatically when it exits collision body
 	if body in bodies_in_area:
 		bodies_in_area.erase(body)
+		
+func set_strength(value: float) -> void:
+	# setter for current strength
+	current_strength = value
+	print("Strength set to ", current_strength)
+	
+func get_strength() -> float:
+	# getter for current strength (currently unused, may not end up needing it?)
+	return current_strength

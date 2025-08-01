@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://cr75xubf3ymsk"]
+[gd_scene load_steps=10 format=3 uid="uid://cr75xubf3ymsk"]
 
 [ext_resource type="PackedScene" uid="uid://ckwn072cvvxnx" path="res://player.tscn" id="1_2dftf"]
 [ext_resource type="PackedScene" uid="uid://crseh7g7s6ifg" path="res://river_current.tscn" id="2_bcbcq"]
+[ext_resource type="Script" uid="uid://bojrycaqjoexf" path="res://river_currents.gd" id="2_p1v5b"]
 [ext_resource type="PackedScene" uid="uid://p7acrgel14o6" path="res://chaser.tscn" id="3_bcbcq"]
-[ext_resource type="PackedScene" uid="uid://xb2hqirwpxx5" path="res://turret.tscn" id="4_js7pq"]
-[ext_resource type="PackedScene" uid="uid://bxqilk4nwc52i" path="res://enemy_water_droplet.tscn" id="5_eu7l1"]
+[ext_resource type="PackedScene" path="res://turret.tscn" id="4_js7pq"]
+[ext_resource type="PackedScene" path="res://enemy_water_droplet.tscn" id="5_eu7l1"]
+[ext_resource type="PackedScene" uid="uid://bjw4wekrxr8ne" path="res://wave_counter.tscn" id="7_wygdx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dftf"]
 size = Vector2(1905.21, 79.6044)
@@ -16,10 +18,17 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-1176, -600, 96, 264, 2
 
 [node name="World" type="Node"]
 
+[node name="WaveCounter" parent="." instance=ExtResource("7_wygdx")]
+position = Vector2(426, -2)
+scale = Vector2(17.1997, 19.52)
+
 [node name="Player" parent="." instance=ExtResource("1_2dftf")]
 position = Vector2(-709, -1037)
 
-[node name="RiverCurrents" type="Node" parent="."]
+[node name="RiverCurrents" type="Node" parent="." node_paths=PackedStringArray("river_currents")]
+unique_name_in_owner = true
+script = ExtResource("2_p1v5b")
+river_currents = [NodePath("RiverCurrent"), NodePath("RiverCurrent2"), NodePath("RiverCurrent5"), NodePath("RiverCurrent3"), NodePath("RiverCurrent6"), NodePath("RiverCurrent4")]
 
 [node name="RiverCurrent" parent="RiverCurrents" instance=ExtResource("2_bcbcq")]
 position = Vector2(1112, 16)
