@@ -1,18 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://ofsv5lr2t6pg"]
+[gd_scene load_steps=4 format=3 uid="uid://bxqilk4nwc52i"]
 
-[ext_resource type="Script" uid="uid://siy60m7psp76" path="res://water_droplet.gd" id="1_h1mwo"]
-[ext_resource type="Texture2D" uid="uid://xfkud3diitvt" path="res://icon.svg" id="1_i5lu3"]
+[ext_resource type="Script" uid="uid://siy60m7psp76" path="res://water_droplet.gd" id="1_ri8x2"]
+[ext_resource type="Texture2D" uid="uid://xfkud3diitvt" path="res://icon.svg" id="2_c4e32"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h1mwo"]
 
-[node name="WaterDroplet" type="Area2D"]
+[node name="WaterDroplet2" type="Area2D"]
 collision_layer = 8
 collision_mask = 6
-script = ExtResource("1_h1mwo")
+script = ExtResource("1_ri8x2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_i5lu3")
+texture = ExtResource("2_c4e32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -23,6 +23,5 @@ wait_time = 3.0
 one_shot = true
 autostart = true
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

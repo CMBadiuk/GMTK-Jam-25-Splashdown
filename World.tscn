@@ -1,21 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://cr75xubf3ymsk"]
+[gd_scene load_steps=8 format=3 uid="uid://cr75xubf3ymsk"]
 
 [ext_resource type="PackedScene" uid="uid://ckwn072cvvxnx" path="res://player.tscn" id="1_2dftf"]
 [ext_resource type="PackedScene" uid="uid://crseh7g7s6ifg" path="res://river_current.tscn" id="2_bcbcq"]
 [ext_resource type="PackedScene" uid="uid://p7acrgel14o6" path="res://chaser.tscn" id="3_bcbcq"]
+[ext_resource type="PackedScene" uid="uid://xb2hqirwpxx5" path="res://turret.tscn" id="4_js7pq"]
+[ext_resource type="PackedScene" uid="uid://bxqilk4nwc52i" path="res://enemy_water_droplet.tscn" id="5_eu7l1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dftf"]
 size = Vector2(1905.21, 79.6044)
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_2dftf"]
-vertices = PackedVector2Array(98, 243.961, -1163.14, -600.43, -1172.56, -928.172, -1096.63, -908.156, -537.211, -749.797, 254.211, -230, 2128.89, -1769.96, 2137.76, -1797.35, 3406.98, -940.008, 1982.76, -1319.04, 3458.42, -679.156, 2782.4, -764.062, 1980.14, -1310.95, 3473.75, -658.43, 2124.94, 254, 1979.02, -230, 98, 254, -538.883, -781.828, -1091.36, -927.438, -1156.96, -946.008, 103.07, -1808.98, 233.883, -1311.99, 2116.17, -1802.04, 1950.84, -1334.24, 1945.41, -1318.89, -1091.28, -927.422, -1091.45, -927.469)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 7, 8), PackedInt32Array(9, 6, 8, 10, 11, 12), PackedInt32Array(10, 13, 14, 15, 11), PackedInt32Array(14, 16, 0, 5, 15), PackedInt32Array(17, 18, 19, 20, 21), PackedInt32Array(21, 20, 22, 23, 24), PackedInt32Array(18, 25, 26)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(88, -240, 1976, -240, 3196, -1051, 3488, -656, 2128, 264, 88, 264), PackedVector2Array(2775, -757, 1955, -1316, 1960.27, -1330.91, 2126.35, -1800.84, 2131, -1814, 3416, -946, 3473, -657, 3190, -1040), PackedVector2Array(-533, -759, 277, -227, 92, -229, 98, 256, -1173, -595, -1183, -943), PackedVector2Array(2132, -1812, 100, -1819, -1182, -941, -537, -771, 237, -1302, 1969, -1309, 1973.25, -1322.12, 2119.38, -1773.04)])
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_bcbcq"]
-vertices = PackedVector2Array(2772.79, -756.812, 3401.21, -933.531, 3413.78, -629.102, 2118.85, 266.008, 1964.06, -220.031, 104.07, 272.977, 247.828, -203.969, -530.359, -761.812, -1165.23, -596.43, -648.977, -793.383, -1180.39, -934.82, -1172.46, -932.711, 2128.93, -1793, 1977.13, -1310, 88.0938, -1793, 228.82, -1310, -643.969, -812.633, -519, -780.82)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(4, 3, 5, 6), PackedInt32Array(7, 6, 5, 8, 9), PackedInt32Array(9, 8, 10, 11), PackedInt32Array(12, 1, 0, 13), PackedInt32Array(14, 12, 13, 15), PackedInt32Array(11, 14, 15, 16), PackedInt32Array(16, 9, 11), PackedInt32Array(16, 15, 17)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(251, -214, 1961, -230, 2755, -757, 1974, -1300, 232, -1300, -517, -770, -1181, -939, 85, -1803, 2132, -1803, 3411, -939, 3424, -624, 2122, 276, 101, 283, -1175, -591, -1191, -948, -526, -771)])
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_eu7l1"]
+vertices = PackedVector2Array(2132.9, -1790.01, 3398, -930.703, 3398, -605.297, 2769.66, -776.172, 1971.05, -1314, 107.047, -1797.98, 236.797, -1314, -1166, -930.711, -529.172, -768.039, -1166, -605.289, 99.0938, 254.008, 228.773, -222, 2116.94, 261.977, 1979.16, -222)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 0, 4, 6), PackedInt32Array(7, 5, 6, 8, 9), PackedInt32Array(10, 9, 8, 11), PackedInt32Array(12, 10, 11, 13), PackedInt32Array(2, 12, 13, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1176, -600, 96, 264, 2120, 272, 3408, -600, 3408, -936, 2136, -1800, 104, -1808, -1176, -936), PackedVector2Array(-512, -768, 240, -1304, 1968, -1304, 2752, -776, 1976, -232, 232, -232)])
 
 [node name="World" type="Node"]
 
@@ -199,14 +196,12 @@ scale = Vector2(1.00212, 1)
 shape = SubResource("RectangleShape2D_2dftf")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="ChaserNavRegion" type="NavigationRegion2D" parent="."]
-visible = false
-position = Vector2(0, 10)
-navigation_polygon = SubResource("NavigationPolygon_2dftf")
+[node name="Turret" parent="." instance=ExtResource("4_js7pq")]
+position = Vector2(1320, 456)
+enemy_projectile_scene = ExtResource("5_eu7l1")
 
 [node name="ChaserBody" parent="." instance=ExtResource("3_bcbcq")]
-visible = false
-position = Vector2(440, -144)
+position = Vector2(-64, -168)
 
-[node name="ChaserFullNavRegion" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_bcbcq")
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_eu7l1")
