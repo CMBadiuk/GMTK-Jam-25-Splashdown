@@ -6,8 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://p7acrgel14o6" path="res://chaser.tscn" id="3_bcbcq"]
 [ext_resource type="PackedScene" uid="uid://xb2hqirwpxx5" path="res://turret.tscn" id="4_js7pq"]
 [ext_resource type="PackedScene" uid="uid://bxqilk4nwc52i" path="res://enemy_water_droplet.tscn" id="5_eu7l1"]
-[ext_resource type="Texture2D" uid="uid://brmr3ch8d7pg" path="res://Textures/GMTK25-BackgroundPlaceholder.jpg" id="6_p1v5b"]
-[ext_resource type="PackedScene" uid="uid://ympbucji0g3a" path="res://cannonballer.tscn" id="7_wygdx"]
+[ext_resource type="PackedScene" uid="uid://bjw4wekrxr8ne" path="res://wave_counter.tscn" id="7_wygdx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dftf"]
 size = Vector2(1905.21, 79.6044)
