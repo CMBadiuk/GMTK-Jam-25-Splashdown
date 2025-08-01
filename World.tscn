@@ -1,5 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cr75xubf3ymsk"]
 
+
 [ext_resource type="PackedScene" uid="uid://ckwn072cvvxnx" path="res://player.tscn" id="1_2dftf"]
 [ext_resource type="PackedScene" uid="uid://crseh7g7s6ifg" path="res://river_current.tscn" id="2_bcbcq"]
 [ext_resource type="PackedScene" uid="uid://p7acrgel14o6" path="res://chaser.tscn" id="3_bcbcq"]
@@ -7,69 +8,212 @@
 [ext_resource type="PackedScene" uid="uid://bxqilk4nwc52i" path="res://enemy_water_droplet.tscn" id="5_eu7l1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dftf"]
-size = Vector2(1889, 80)
+size = Vector2(1905.21, 79.6044)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2dftf"]
-vertices = PackedVector2Array(3197.42, -1058.15, 3474.02, -658.609, 2124.94, 254, 1979.08, -230, 98, 254, 98, -230)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(88, -240, 1976, -240, 3200, -1072, 3488, -656, 2128, 264, 88, 264)])
+vertices = PackedVector2Array(98, 243.961, -1163.14, -600.43, -1172.56, -928.172, -1096.63, -908.156, -537.211, -749.797, 254.211, -230, 2128.89, -1769.96, 2137.76, -1797.35, 3406.98, -940.008, 1982.76, -1319.04, 3458.42, -679.156, 2782.4, -764.062, 1980.14, -1310.95, 3473.75, -658.43, 2124.94, 254, 1979.02, -230, 98, 254, -538.883, -781.828, -1091.36, -927.438, -1156.96, -946.008, 103.07, -1808.98, 233.883, -1311.99, 2116.17, -1802.04, 1950.84, -1334.24, 1945.41, -1318.89, -1091.28, -927.422, -1091.45, -927.469)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 7, 8), PackedInt32Array(9, 6, 8, 10, 11, 12), PackedInt32Array(10, 13, 14, 15, 11), PackedInt32Array(14, 16, 0, 5, 15), PackedInt32Array(17, 18, 19, 20, 21), PackedInt32Array(21, 20, 22, 23, 24), PackedInt32Array(18, 25, 26)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(88, -240, 1976, -240, 3196, -1051, 3488, -656, 2128, 264, 88, 264), PackedVector2Array(2775, -757, 1955, -1316, 1960.27, -1330.91, 2126.35, -1800.84, 2131, -1814, 3416, -946, 3473, -657, 3190, -1040), PackedVector2Array(-533, -759, 277, -227, 92, -229, 98, 256, -1173, -595, -1183, -943), PackedVector2Array(2132, -1812, 100, -1819, -1182, -941, -537, -771, 237, -1302, 1969, -1309, 1973.25, -1322.12, 2119.38, -1773.04)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_bcbcq"]
+vertices = PackedVector2Array(2772.79, -756.812, 3401.21, -933.531, 3413.78, -629.102, 2118.85, 266.008, 1964.06, -220.031, 104.07, 272.977, 247.828, -203.969, -530.359, -761.812, -1165.23, -596.43, -648.977, -793.383, -1180.39, -934.82, -1172.46, -932.711, 2128.93, -1793, 1977.13, -1310, 88.0938, -1793, 228.82, -1310, -643.969, -812.633, -519, -780.82)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(4, 3, 5, 6), PackedInt32Array(7, 6, 5, 8, 9), PackedInt32Array(9, 8, 10, 11), PackedInt32Array(12, 1, 0, 13), PackedInt32Array(14, 12, 13, 15), PackedInt32Array(11, 14, 15, 16), PackedInt32Array(16, 9, 11), PackedInt32Array(16, 15, 17)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(251, -214, 1961, -230, 2755, -757, 1974, -1300, 232, -1300, -517, -770, -1181, -939, 85, -1803, 2132, -1803, 3411, -939, 3424, -624, 2122, 276, 101, 283, -1175, -591, -1191, -948, -526, -771)])
 
 [node name="World" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_2dftf")]
-position = Vector2(712, 88)
+position = Vector2(-709, -1037)
 
-[node name="RiverCurrent" parent="." instance=ExtResource("2_bcbcq")]
+[node name="RiverCurrents" type="Node" parent="."]
+
+[node name="RiverCurrent" parent="RiverCurrents" instance=ExtResource("2_bcbcq")]
 position = Vector2(1112, 16)
 
-[node name="RiverCurrent2" parent="." instance=ExtResource("2_bcbcq")]
+[node name="RiverCurrent2" parent="RiverCurrents" instance=ExtResource("2_bcbcq")]
 position = Vector2(2664, -400)
 rotation = -0.597879
 scale = Vector2(0.80021, 1)
 current_direction = Vector2(1, -0.5)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="RiverCurrent5" parent="RiverCurrents" instance=ExtResource("2_bcbcq")]
+position = Vector2(-438, -406)
+rotation = 0.592907
+scale = Vector2(0.80021, 1)
+current_direction = Vector2(1, 0.5)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1032, -280)
+[node name="RiverCurrent3" parent="RiverCurrents" instance=ExtResource("2_bcbcq")]
+position = Vector2(2677, -1131)
+rotation = -2.54879
+scale = Vector2(0.80021, 1)
+current_direction = Vector2(-1, -0.5)
+
+[node name="RiverCurrent6" parent="RiverCurrents" instance=ExtResource("2_bcbcq")]
+position = Vector2(-409, -1145)
+rotation = -0.594415
+scale = Vector2(0.80021, 1)
+current_direction = Vector2(-1, 0)
+
+[node name="RiverCurrent4" parent="RiverCurrents" instance=ExtResource("2_bcbcq")]
+position = Vector2(1159, -1545)
+rotation = -3.1421
+scale = Vector2(1.04021, 1)
+current_direction = Vector2(-1, 0)
+
+[node name="RedCollisionBodies" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RedCollisionBodies"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedCollisionBodies/StaticBody2D"]
+position = Vector2(1097, -280)
+scale = Vector2(0.9029, 1)
 shape = SubResource("RectangleShape2D_2dftf")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(-8, 592)
+[node name="StaticBody2D5" type="StaticBody2D" parent="RedCollisionBodies"]
+position = Vector2(0, -971)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedCollisionBodies/StaticBody2D5"]
+position = Vector2(1097, -280)
+scale = Vector2(0.9029, 1)
+shape = SubResource("RectangleShape2D_2dftf")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="RedCollisionBodies"]
+position = Vector2(71, -1916)
 scale = Vector2(1.10122, 1.00696)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(1032, -280)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedCollisionBodies/StaticBody2D2"]
+position = Vector2(954.396, 65.5438)
 shape = SubResource("RectangleShape2D_2dftf")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+[node name="StaticBody2D6" type="StaticBody2D" parent="RedCollisionBodies"]
+position = Vector2(71, 253)
+scale = Vector2(1.10122, 1.00696)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedCollisionBodies/StaticBody2D6"]
+position = Vector2(954.396, 65.5438)
+shape = SubResource("RectangleShape2D_2dftf")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="RedCollisionBodies"]
 position = Vector2(2048, -6.10352e-05)
 rotation = -0.595204
-scale = Vector2(0.795758, 1.00014)
+scale = Vector2(0.485931, 1.00014)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2(1032, -280)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedCollisionBodies/StaticBody2D3"]
+position = Vector2(1085.79, -281.562)
 shape = SubResource("RectangleShape2D_2dftf")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+[node name="StaticBody2D9" type="StaticBody2D" parent="RedCollisionBodies"]
+position = Vector2(-336, -504)
+rotation = -0.595204
+scale = Vector2(0.441077, 1.00014)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedCollisionBodies/StaticBody2D9"]
+position = Vector2(1142.86, -287.832)
+shape = SubResource("RectangleShape2D_2dftf")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="RedCollisionBodies"]
+position = Vector2(-1253, -558)
+rotation = -0.595204
+scale = Vector2(0.941426, 1.21198)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedCollisionBodies/StaticBody2D10"]
+position = Vector2(1047.76, -266.009)
+shape = SubResource("RectangleShape2D_2dftf")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="StaticBody2D13" type="StaticBody2D" parent="RedCollisionBodies"]
+position = Vector2(-1253, -558)
+rotation = -0.595204
+scale = Vector2(0.941426, 1.21198)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedCollisionBodies/StaticBody2D13"]
+position = Vector2(170.742, -144.363)
+rotation = -0.86613
+scale = Vector2(0.193746, 1)
+shape = SubResource("RectangleShape2D_2dftf")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="StaticBody2D14" type="StaticBody2D" parent="RedCollisionBodies"]
+position = Vector2(3425, -558)
+rotation = -0.595204
+scale = Vector2(0.941426, 1.21198)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedCollisionBodies/StaticBody2D14"]
+position = Vector2(170.742, -144.363)
+rotation = -0.86613
+scale = Vector2(0.193746, 1)
+shape = SubResource("RectangleShape2D_2dftf")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="RedCollisionBodies"]
 position = Vector2(2240, 584)
 rotation = -0.595204
 scale = Vector2(0.874901, 1.01209)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedCollisionBodies/StaticBody2D4"]
 position = Vector2(1032, -280)
 shape = SubResource("RectangleShape2D_2dftf")
 debug_color = Color(1, 0, 0, 0.419608)
 
+[node name="StaticBody2D7" type="StaticBody2D" parent="RedCollisionBodies"]
+position = Vector2(-1672, -535)
+rotation = 0.595157
+scale = Vector2(0.986, 1.01209)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedCollisionBodies/StaticBody2D7"]
+position = Vector2(1032, -280)
+shape = SubResource("RectangleShape2D_2dftf")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="RedCollisionBodies"]
+position = Vector2(1912, -1665)
+rotation = 0.595157
+scale = Vector2(0.986, 1.01209)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedCollisionBodies/StaticBody2D8"]
+position = Vector2(1032, -280)
+shape = SubResource("RectangleShape2D_2dftf")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="RedCollisionBodies"]
+position = Vector2(1750, -1050)
+rotation = 0.595157
+scale = Vector2(0.486987, 1.01796)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedCollisionBodies/StaticBody2D11"]
+position = Vector2(1032, -280)
+shape = SubResource("RectangleShape2D_2dftf")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="RedCollisionBodies"]
+position = Vector2(1750, -1050)
+rotation = 0.595157
+scale = Vector2(0.486987, 1.01796)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedCollisionBodies/StaticBody2D12"]
+position = Vector2(-2531.15, 1439.09)
+scale = Vector2(1.00212, 1)
+shape = SubResource("RectangleShape2D_2dftf")
+debug_color = Color(1, 0, 0, 0.419608)
+
 [node name="ChaserNavRegion" type="NavigationRegion2D" parent="."]
+visible = false
+position = Vector2(0, 10)
 navigation_polygon = SubResource("NavigationPolygon_2dftf")
 
 [node name="ChaserBody" parent="." instance=ExtResource("3_bcbcq")]
+visible = false
 position = Vector2(440, -144)
 
 [node name="Turret" parent="." instance=ExtResource("4_js7pq")]
 position = Vector2(1320, 456)
 enemy_projectile_scene = ExtResource("5_eu7l1")
+
+[node name="ChaserFullNavRegion" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_bcbcq")
