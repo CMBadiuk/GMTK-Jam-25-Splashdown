@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://h8b1ajs5wb8"]
+
+[node name="SplashDamage" type="Area2D"]

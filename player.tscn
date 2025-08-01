@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://ckwn072cvvxnx"]
 
-[ext_resource type="Texture2D" uid="uid://xfkud3diitvt" path="res://icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://c7r8qm2lji5hn" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://ofsv5lr2t6pg" path="res://water_droplet.tscn" id="2_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://bdysdogi0v8fo" path="res://Textures/GMTK25-PlayerPlaceholder.png" id="3_i3pqv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 64.0
@@ -14,7 +14,8 @@ script = ExtResource("1_onrkg")
 water_droplet_scene = ExtResource("2_i3pqv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_4flbx")
+rotation = 1.5708
+texture = ExtResource("3_i3pqv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 shape = SubResource("CircleShape2D_onrkg")
