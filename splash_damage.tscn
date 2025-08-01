@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://h8b1ajs5wb8"]
+
+[ext_resource type="Script" uid="uid://coguxgqdeq1tk" path="res://splash_damage.gd" id="1_3fc4l"]
+[ext_resource type="Texture2D" uid="uid://4viikpf0df4g" path="res://Textures/GMTK25-SplashPlaceholder.png" id="2_bibi3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vjonw"]
+radius = 232.138
+
+[node name="SplashDamage" type="Area2D"]
+collision_layer = 8
+collision_mask = 6
+script = ExtResource("1_3fc4l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(2, 2)
+texture = ExtResource("2_bibi3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vjonw")
+
+[node name="DurationTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true

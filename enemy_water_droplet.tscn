@@ -1,9 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://bxqilk4nwc52i"]
 
 [ext_resource type="Script" uid="uid://siy60m7psp76" path="res://water_droplet.gd" id="1_ri8x2"]
-[ext_resource type="Texture2D" uid="uid://xfkud3diitvt" path="res://icon.svg" id="2_c4e32"]
+[ext_resource type="Texture2D" uid="uid://deuxoea58c2dl" path="res://Textures/GMTK25-WaterPlaceholder.png" id="2_ri8x2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h1mwo"]
+height = 48.0
 
 [node name="WaterDroplet2" type="Area2D"]
 collision_layer = 8
@@ -11,8 +12,9 @@ collision_mask = 6
 script = ExtResource("1_ri8x2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_c4e32")
+position = Vector2(2.38419e-07, 0)
+scale = Vector2(1, 0.25)
+texture = ExtResource("2_ri8x2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://ympbucji0g3a"]
+
+[ext_resource type="Script" uid="uid://dbsmiu3pp7xed" path="res://cannonballer.gd" id="1_xel38"]
+[ext_resource type="PackedScene" uid="uid://cxah6cecn0822" path="res://warning_indicator.tscn" id="2_fre3o"]
+[ext_resource type="PackedScene" uid="uid://h8b1ajs5wb8" path="res://splash_damage.tscn" id="3_ed0ul"]
+
+[node name="Cannonballer" type="Node2D"]
+script = ExtResource("1_xel38")
+warning_indicator_scene = ExtResource("2_fre3o")
+splash_damage_scene = ExtResource("3_ed0ul")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
