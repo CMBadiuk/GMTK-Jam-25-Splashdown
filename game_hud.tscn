@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvgn0pkfdfsvd"]
+[gd_scene load_steps=8 format=3 uid="uid://cvgn0pkfdfsvd"]
 
 [ext_resource type="Script" uid="uid://dcdam3alfbvbf" path="res://game_hud.gd" id="1_q4g6c"]
 [ext_resource type="Texture2D" uid="uid://b7bgfx64y2gon" path="res://Textures/GMTK25-BarUnderPlaceholder.png" id="2_2uf8q"]
@@ -14,6 +14,11 @@ outline_color = Color(0, 0, 0, 1)
 font_size = 32
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t6vrg"]
+font_size = 48
+outline_size = 4
+outline_color = Color(0.103744, 0.103744, 0.103744, 1)
 
 [node name="GameHUD" type="Control"]
 layout_mode = 3
@@ -73,3 +78,16 @@ max_value = 50.0
 fill_mode = 1
 texture_under = ExtResource("2_2uf8q")
 texture_progress = ExtResource("4_t6vrg")
+
+[node name="WaveLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 96.0
+offset_right = 87.0
+offset_bottom = 163.0
+grow_horizontal = 2
+text = "Wave 0"
+label_settings = SubResource("LabelSettings_t6vrg")

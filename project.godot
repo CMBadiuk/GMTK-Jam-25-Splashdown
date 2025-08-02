@@ -32,6 +32,7 @@ window/stretch/mode="viewport"
 player=""
 enemy=""
 spawn_point=""
+wave_counter=""
 
 [input]
 

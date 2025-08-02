@@ -1,12 +1,15 @@
 extends Area2D
 
-var counter := 0
+signal wave_changed(new_wave)
+
+var counter := -1
 
 # Called when player enters wave counter
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		counter += 1
 		print("Wave Counter: ", counter)
+		wave_changed.emit(counter)
 
 		# notify river current system (if applicable)
 		get_node("/root/World/RiverCurrents").on_player_pass_wave_counter()

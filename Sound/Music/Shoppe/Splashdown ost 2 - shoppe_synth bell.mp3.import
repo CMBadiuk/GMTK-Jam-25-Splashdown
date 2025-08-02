@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d3l38ecblvl82"
+path="res://.godot/imported/Splashdown ost 2 - shoppe_synth bell.mp3-887e06480689f66bd408bea2e910fc44.mp3str"
+
+[deps]
+
+source_file="res://Sound/Music/Shoppe/Splashdown ost 2 - shoppe_synth bell.mp3"
+dest_files=["res://.godot/imported/Splashdown ost 2 - shoppe_synth bell.mp3-887e06480689f66bd408bea2e910fc44.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

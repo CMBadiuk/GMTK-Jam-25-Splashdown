@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://0s2kgperxkgx"
+path="res://.godot/imported/Splashdown ost 2 - shoppe_Master.mp3-0ef279b67780e3b94d11568fbb736531.mp3str"
+
+[deps]
+
+source_file="res://Sound/Music/Shoppe/Splashdown ost 2 - shoppe_Master.mp3"
+dest_files=["res://.godot/imported/Splashdown ost 2 - shoppe_Master.mp3-0ef279b67780e3b94d11568fbb736531.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

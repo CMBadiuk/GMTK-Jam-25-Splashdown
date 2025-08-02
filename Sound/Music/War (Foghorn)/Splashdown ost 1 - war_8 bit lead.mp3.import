@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bbxavd4mw660r"
+path="res://.godot/imported/Splashdown ost 1 - war_8 bit lead.mp3-fa7573ac7c1713ed2e993048a3949b9e.mp3str"
+
+[deps]
+
+source_file="res://Sound/Music/War (Foghorn)/Splashdown ost 1 - war_8 bit lead.mp3"
+dest_files=["res://.godot/imported/Splashdown ost 1 - war_8 bit lead.mp3-fa7573ac7c1713ed2e993048a3949b9e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

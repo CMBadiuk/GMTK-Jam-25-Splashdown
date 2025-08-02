@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://5rhr6imlnp64"
+path="res://.godot/imported/Splashdown ost 1 - war (no foghorn)_snare drum.mp3-1abf24463774b68b956f07e807278d7f.mp3str"
+
+[deps]
+
+source_file="res://Sound/Music/War (No Foghorn)/Splashdown ost 1 - war (no foghorn)_snare drum.mp3"
+dest_files=["res://.godot/imported/Splashdown ost 1 - war (no foghorn)_snare drum.mp3-1abf24463774b68b956f07e807278d7f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

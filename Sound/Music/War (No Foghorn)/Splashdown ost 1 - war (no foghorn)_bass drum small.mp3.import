@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cv7vi3cctb56"
+path="res://.godot/imported/Splashdown ost 1 - war (no foghorn)_bass drum small.mp3-120eafdce291d6de9c8e8054888707ac.mp3str"
+
+[deps]
+
+source_file="res://Sound/Music/War (No Foghorn)/Splashdown ost 1 - war (no foghorn)_bass drum small.mp3"
+dest_files=["res://.godot/imported/Splashdown ost 1 - war (no foghorn)_bass drum small.mp3-120eafdce291d6de9c8e8054888707ac.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

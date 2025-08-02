@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cmdurmetme0x4"
+path="res://.godot/imported/Splashdown ost 2 - shoppe_piano.mp3-e7068a1ff3454de50105c6e2d700bc6c.mp3str"
+
+[deps]
+
+source_file="res://Sound/Music/Shoppe/Splashdown ost 2 - shoppe_piano.mp3"
+dest_files=["res://.godot/imported/Splashdown ost 2 - shoppe_piano.mp3-e7068a1ff3454de50105c6e2d700bc6c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://do84mili1uvyb"
+path="res://.godot/imported/Splashdown ost 2 - shoppe_pad synth.mp3-d7ec014d18ed4a5e54c23562f45f19f3.mp3str"
+
+[deps]
+
+source_file="res://Sound/Music/Shoppe/Splashdown ost 2 - shoppe_pad synth.mp3"
+dest_files=["res://.godot/imported/Splashdown ost 2 - shoppe_pad synth.mp3-d7ec014d18ed4a5e54c23562f45f19f3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

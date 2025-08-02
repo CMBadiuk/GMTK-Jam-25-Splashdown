@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://kw6eyi01kl3h"
+path="res://.godot/imported/Splashdown ost 1 - war_glass voices.mp3-ff32481164153ad073b946a123c14af9.mp3str"
+
+[deps]
+
+source_file="res://Sound/Music/War (Foghorn)/Splashdown ost 1 - war_glass voices.mp3"
+dest_files=["res://.godot/imported/Splashdown ost 1 - war_glass voices.mp3-ff32481164153ad073b946a123c14af9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

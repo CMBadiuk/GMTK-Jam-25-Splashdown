@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://drm6ipu0mm3bb"
+path="res://.godot/imported/Splashdown ost 1 - war_transition 3.mp3-2f5bae300cb7ecbec5080f95aa97e679.mp3str"
+
+[deps]
+
+source_file="res://Sound/Music/War (Foghorn)/Splashdown ost 1 - war_transition 3.mp3"
+dest_files=["res://.godot/imported/Splashdown ost 1 - war_transition 3.mp3-2f5bae300cb7ecbec5080f95aa97e679.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

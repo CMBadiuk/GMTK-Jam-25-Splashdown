@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bjpftutk6k4gt"
+path="res://.godot/imported/Splashdown ost 1 - war_bass drum big.mp3-b599adf7af525578c62d0daa8c3fd722.mp3str"
+
+[deps]
+
+source_file="res://Sound/Music/War (Foghorn)/Splashdown ost 1 - war_bass drum big.mp3"
+dest_files=["res://.godot/imported/Splashdown ost 1 - war_bass drum big.mp3-b599adf7af525578c62d0daa8c3fd722.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjw4wekrxr8ne"]
+[gd_scene load_steps=3 format=3 uid="uid://u8hl5u5ma3xq"]
 
 [ext_resource type="Script" uid="uid://b0se40e3qdrjo" path="res://wave_counter.gd" id="1_d2x5u"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_kois3"]
 b = Vector2(0, 34)
 
-[node name="WaveCounter" type="Node2D"]
+[node name="WaveCounter" type="Node2D" groups=["wave_counter"]]
 
 [node name="WaveCounter" type="Area2D" parent="."]
 collision_layer = 2

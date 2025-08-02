@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://beoh8byc4yijy"
+path="res://.godot/imported/Splashdown ost 2 - shoppe_pizzicato.mp3-2f1b0825ef335281f6dd37a8bc57b567.mp3str"
+
+[deps]
+
+source_file="res://Sound/Music/Shoppe/Splashdown ost 2 - shoppe_pizzicato.mp3"
+dest_files=["res://.godot/imported/Splashdown ost 2 - shoppe_pizzicato.mp3-2f1b0825ef335281f6dd37a8bc57b567.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

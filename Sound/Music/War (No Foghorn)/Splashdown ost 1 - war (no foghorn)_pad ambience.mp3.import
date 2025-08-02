@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c7f3bd2iav44m"
+path="res://.godot/imported/Splashdown ost 1 - war (no foghorn)_pad ambience.mp3-903dfeb4e88a5e2cbec1beeb96389bd5.mp3str"
+
+[deps]
+
+source_file="res://Sound/Music/War (No Foghorn)/Splashdown ost 1 - war (no foghorn)_pad ambience.mp3"
+dest_files=["res://.godot/imported/Splashdown ost 1 - war (no foghorn)_pad ambience.mp3-903dfeb4e88a5e2cbec1beeb96389bd5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

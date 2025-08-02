@@ -1,18 +1,15 @@
 [gd_scene load_steps=13 format=3 uid="uid://cr75xubf3ymsk"]
 
 [ext_resource type="PackedScene" uid="uid://ckwn072cvvxnx" path="res://player.tscn" id="1_2dftf"]
-[ext_resource type="Script" path="res://world.gd" id="1_fv4w7"]
+[ext_resource type="Script" uid="uid://uxffqmy84r6c" path="res://world.gd" id="1_fv4w7"]
 [ext_resource type="PackedScene" uid="uid://crseh7g7s6ifg" path="res://river_current.tscn" id="2_bcbcq"]
-[ext_resource type="PackedScene" uid="uid://bjw4wekrxr8ne" path="res://wave_counter.tscn" id="2_f5c0m"]
-[ext_resource type="Script" uid="uid://bojrycaqjoexf" path="res://river_currents.gd" id="2_p1v5b"]
-[ext_resource type="PackedScene" uid="uid://p7acrgel14o6" path="res://chaser.tscn" id="3_bcbcq"]
+[ext_resource type="PackedScene" uid="uid://u8hl5u5ma3xq" path="res://wave_counter.tscn" id="2_f5c0m"]
+[ext_resource type="Script" path="res://river_currents.gd" id="2_p1v5b"]
 [ext_resource type="Texture2D" uid="uid://caohu6l23fm0u" path="res://Textures/Pool Path/River6.png" id="4_fvag4"]
-[ext_resource type="PackedScene" uid="uid://xb2hqirwpxx5" path="res://turret.tscn" id="4_js7pq"]
 [ext_resource type="Texture2D" uid="uid://brmr3ch8d7pg" path="res://Textures/GMTK25-BackgroundPlaceholder.jpg" id="6_p1v5b"]
 [ext_resource type="PackedScene" uid="uid://cvgn0pkfdfsvd" path="res://game_hud.tscn" id="7_bah7m"]
-[ext_resource type="PackedScene" uid="uid://ympbucji0g3a" path="res://cannonballer.tscn" id="7_wygdx"]
 [ext_resource type="PackedScene" uid="uid://cdyjrifsksata" path="res://game_over_screen.tscn" id="9_fvag4"]
-[ext_resource type="PackedScene" uid="uid://duprj2epfk8jx" path="res://spawn_point.tscn" id="11_kva58"]
+[ext_resource type="PackedScene" path="res://spawn_point.tscn" id="11_kva58"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dftf"]
 size = Vector2(1905.21, 79.6044)
@@ -25,20 +22,22 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-1776, -1056, -1776, -4
 [node name="World" type="Node"]
 script = ExtResource("1_fv4w7")
 
-[node name="WaveCounter" parent="." instance=ExtResource("2_f5c0m")]
-position = Vector2(513, -3)
-scale = Vector2(6, 16.84)
-
 [node name="SpawnPoints" type="Node" parent="."]
 
 [node name="SpawnPoint" parent="SpawnPoints" instance=ExtResource("11_kva58")]
 position = Vector2(2928, -1111)
+spawn_type = 1
 
 [node name="SpawnPoint2" parent="SpawnPoints" instance=ExtResource("11_kva58")]
 position = Vector2(173, -1713)
+spawn_type = 1
 
 [node name="SpawnPoint3" parent="SpawnPoints" instance=ExtResource("11_kva58")]
-position = Vector2(-565, -181)
+position = Vector2(-464, -264)
+spawn_type = 1
+
+[node name="SpawnPoint4" parent="SpawnPoints" instance=ExtResource("11_kva58")]
+position = Vector2(1112, 568)
 
 [node name="Player" parent="." instance=ExtResource("1_2dftf")]
 z_index = 1
@@ -276,9 +275,6 @@ scale = Vector2(1.00212, 1)
 shape = SubResource("RectangleShape2D_2dftf")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="Turret" parent="." instance=ExtResource("4_js7pq")]
-position = Vector2(1320, 456)
-
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_eu7l1")
 
@@ -287,17 +283,11 @@ vertices = PackedVector2Array(-504, -760, 256, -240, 1968, -240, 2744, -768, 196
 affect_navigation_mesh = true
 carve_navigation_mesh = true
 
-[node name="ChaserBody" parent="." instance=ExtResource("3_bcbcq")]
-position = Vector2(-184, -240)
-
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -2
 position = Vector2(1048, -736)
 scale = Vector2(2, 2)
 texture = ExtResource("6_p1v5b")
-
-[node name="Cannonballer" parent="." instance=ExtResource("7_wygdx")]
-position = Vector2(-824, -752)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -305,3 +295,7 @@ position = Vector2(-824, -752)
 
 [node name="GameOverScreen" parent="CanvasLayer" instance=ExtResource("9_fvag4")]
 visible = false
+
+[node name="WaveCounter" parent="." instance=ExtResource("2_f5c0m")]
+position = Vector2(1744, 0)
+scale = Vector2(15.72, 16.44)
