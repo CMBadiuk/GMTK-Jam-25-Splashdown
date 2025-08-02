@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bdysdogi0v8fo" path="res://Textures/GMTK25-PlayerPlaceholder.png" id="3_i3pqv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
-radius = 64.0
+radius = 56.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
@@ -25,12 +25,15 @@ zoom = Vector2(0.65, 0.65)
 position_smoothing_enabled = true
 
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(72, 0)
+position = Vector2(64, 24)
 
 [node name="FireRateTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
 
 [node name="DamageFlashTimer" type="Timer" parent="."]
+
+[node name="RefillTimer" type="Timer" parent="."]
+wait_time = 0.1
 
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

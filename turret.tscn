@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://xfkud3diitvt" path="res://icon.svg" id="1_3oylf"]
 [ext_resource type="Script" uid="uid://cc25y2tlihodb" path="res://turret.gd" id="1_tjdg3"]
-[ext_resource type="PackedScene" uid="uid://ofsv5lr2t6pg" path="res://water_droplet.tscn" id="2_c5apd"]
+[ext_resource type="PackedScene" uid="uid://bxqilk4nwc52i" path="res://enemy_water_droplet.tscn" id="2_c5apd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c5apd"]
-radius = 60.9262
+radius = 83.8961
 
 [node name="Turret" type="Node2D" groups=["enemy"]]
 script = ExtResource("1_tjdg3")
@@ -16,7 +16,7 @@ modulate = Color(0, 1, 0, 1)
 texture = ExtResource("1_3oylf")
 
 [node name="Muzzle" type="Marker2D" parent="Head"]
-position = Vector2(72, 0)
+position = Vector2(104, 0)
 
 [node name="FiringRange" type="Area2D" parent="."]
 collision_layer = 0
