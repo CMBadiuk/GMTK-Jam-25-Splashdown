@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cr75xubf3ymsk"]
+[gd_scene load_steps=15 format=3 uid="uid://cr75xubf3ymsk"]
 
 [ext_resource type="PackedScene" uid="uid://ckwn072cvvxnx" path="res://player.tscn" id="1_2dftf"]
-[ext_resource type="Script" uid="uid://uxffqmy84r6c" path="res://world.gd" id="1_fv4w7"]
+[ext_resource type="Script" path="res://world.gd" id="1_fv4w7"]
 [ext_resource type="PackedScene" uid="uid://crseh7g7s6ifg" path="res://river_current.tscn" id="2_bcbcq"]
+[ext_resource type="PackedScene" uid="uid://bjw4wekrxr8ne" path="res://wave_counter.tscn" id="2_f5c0m"]
 [ext_resource type="Script" uid="uid://bojrycaqjoexf" path="res://river_currents.gd" id="2_p1v5b"]
 [ext_resource type="PackedScene" uid="uid://p7acrgel14o6" path="res://chaser.tscn" id="3_bcbcq"]
 [ext_resource type="PackedScene" uid="uid://xb2hqirwpxx5" path="res://turret.tscn" id="4_js7pq"]
@@ -10,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cvgn0pkfdfsvd" path="res://game_hud.tscn" id="7_bah7m"]
 [ext_resource type="PackedScene" uid="uid://ympbucji0g3a" path="res://cannonballer.tscn" id="7_wygdx"]
 [ext_resource type="PackedScene" uid="uid://cdyjrifsksata" path="res://game_over_screen.tscn" id="9_fvag4"]
+[ext_resource type="PackedScene" uid="uid://duprj2epfk8jx" path="res://spawn_point.tscn" id="11_kva58"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dftf"]
 size = Vector2(1905.21, 79.6044)
@@ -22,9 +24,20 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-1776, -1056, -1776, -4
 [node name="World" type="Node"]
 script = ExtResource("1_fv4w7")
 
-[node name="WaveCounter" parent="." instance=ExtResource("7_wygdx")]
-position = Vector2(426, -2)
-scale = Vector2(17.1997, 19.52)
+[node name="WaveCounter" parent="." instance=ExtResource("2_f5c0m")]
+position = Vector2(513, -3)
+scale = Vector2(6, 16.84)
+
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="SpawnPoint" parent="SpawnPoints" instance=ExtResource("11_kva58")]
+position = Vector2(2928, -1111)
+
+[node name="SpawnPoint2" parent="SpawnPoints" instance=ExtResource("11_kva58")]
+position = Vector2(173, -1713)
+
+[node name="SpawnPoint3" parent="SpawnPoints" instance=ExtResource("11_kva58")]
+position = Vector2(-565, -181)
 
 [node name="Player" parent="." instance=ExtResource("1_2dftf")]
 position = Vector2(-709, -1037)
