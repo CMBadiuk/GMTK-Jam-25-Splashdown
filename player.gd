@@ -9,7 +9,9 @@ enum ControlScheme { MOUSE_KB, CONTROLLER }
 @export var friction: float = 0.95
 # Reference to water droplet scene
 @export var water_droplet_scene: PackedScene
-@export var health: int = 5
+# @export var health: int = 5
+
+@onready var refill_timer = $RefillTimer
 
 var can_shoot:= true
 var active_scheme: ControlScheme = ControlScheme.MOUSE_KB
@@ -17,6 +19,7 @@ var last_controller_aim := Vector2.RIGHT # Default aim for controller
 
 func _ready():
 	$DamageFlashTimer.timeout.connect(_on_damage_flash_timer_timeout)
+	refill_timer.timeout.connect(_on_refill_timer_timeout)
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Runs whenever there's an input event, used to detect last used input device
@@ -31,6 +34,12 @@ func _process(delta: float) -> void:
 	aim()
 	if Input.is_action_pressed("Fire") and can_shoot:
 		shoot()
+		
+	if Input.is_action_pressed("Refill") and refill_timer.is_stopped():
+		refill_timer.start()
+	elif Input.is_action_just_released("Refill"):
+		refill_timer.stop()
+	print(PlayerStats.ammo)
 
 func _physics_process(delta: float) -> void:
 	# Get movement input direction
@@ -71,13 +80,20 @@ func aim_with_controller() -> void:
 func shoot() -> void:
 	# This function handles firing a projectile.
 	# First, check if the scene has been assigned in the editor.
+	if PlayerStats.ammo <= 0 or not can_shoot:
+		print("Ammo empty")
+		return
+	
 	if not water_droplet_scene:
 		print("Water droplet scene not set on player!")
 		return
 		
+	refill_timer.stop()
+		
 	# Set can_shoot to false, start cooldown timer
 	can_shoot = false
 	$FireRateTimer.start()
+	PlayerStats.ammo -= 1
 
 	# Create a new instance of our water droplet, parent it to world root
 	var droplet = water_droplet_scene.instantiate()
@@ -92,14 +108,19 @@ func shoot() -> void:
 		droplet.rotation = last_controller_aim.angle()
 		
 func take_damage(amount: int):
-	health -= amount
-	print("Player took ", amount, " damage! Health is now ", health)
+	PlayerStats.health -= amount
+	print("Player took ", amount, " damage! Health is now ", PlayerStats.health)
 	$Sprite2D.modulate = Color.RED
 	$DamageFlashTimer.start()
 	
-	if health <= 0:
+	if PlayerStats.health <= 0:
 		print("GAME OVER")
+		PlayerStats.player_died.emit()
 		queue_free()
+		
+func _on_refill_timer_timeout():
+	if PlayerStats.ammo < PlayerStats.max_ammo:
+		PlayerStats.ammo += 1
 		
 func _on_damage_flash_timer_timeout():
 	$Sprite2D.modulate = Color.WHITE

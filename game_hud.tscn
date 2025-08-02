@@ -1,0 +1,101 @@
+[gd_scene load_steps=7 format=3 uid="uid://cvgn0pkfdfsvd"]
+
+[ext_resource type="Script" uid="uid://dcdam3alfbvbf" path="res://game_hud.gd" id="1_q4g6c"]
+[ext_resource type="Texture2D" uid="uid://b7bgfx64y2gon" path="res://Textures/GMTK25-BarUnderPlaceholder.png" id="2_2uf8q"]
+[ext_resource type="Texture2D" uid="uid://cof5amv4ptiif" path="res://Textures/GMTK25-BarHealthPlaceholder.png" id="3_nlrtl"]
+[ext_resource type="Texture2D" uid="uid://c6vh4jj1y2xdl" path="res://Textures/GMTK25-BarWaterPlaceholder.png" id="4_t6vrg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2uf8q"]
+font_size = 32
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nlrtl"]
+font_size = 32
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="GameHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q4g6c")
+
+[node name="HealthLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -80.0
+offset_right = 84.0
+offset_bottom = -57.0
+grow_vertical = 0
+text = "Health"
+label_settings = SubResource("LabelSettings_2uf8q")
+
+[node name="TexHealthBar" type="TextureProgressBar" parent="HealthLabel"]
+layout_mode = 0
+offset_top = -42.0
+offset_right = 200.0
+offset_bottom = -2.00003
+scale = Vector2(1.25, 1.25)
+max_value = 5.0
+texture_under = ExtResource("2_2uf8q")
+texture_progress = ExtResource("3_nlrtl")
+
+[node name="HealthBar" type="ProgressBar" parent="HealthLabel"]
+visible = false
+layout_mode = 0
+offset_top = -32.7869
+offset_right = 4.0
+offset_bottom = -5.78689
+value = 50.0
+show_percentage = false
+
+[node name="AmmoLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -104.0
+offset_right = -34.0
+offset_bottom = -59.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Water"
+label_settings = SubResource("LabelSettings_nlrtl")
+
+[node name="TexAmmoBar" type="TextureProgressBar" parent="AmmoLabel"]
+layout_mode = 0
+offset_left = -152.0
+offset_top = -40.0
+offset_right = 48.0
+scale = Vector2(1.25, 1.25)
+max_value = 50.0
+fill_mode = 1
+texture_under = ExtResource("2_2uf8q")
+texture_progress = ExtResource("4_t6vrg")
+
+[node name="AmmoBar" type="ProgressBar" parent="AmmoLabel"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.2089
+offset_top = -49.8657
+offset_right = -1.2089
+offset_bottom = -22.8657
+grow_horizontal = 0
+grow_vertical = 0
+fill_mode = 1
+show_percentage = false
