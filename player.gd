@@ -32,14 +32,14 @@ func _unhandled_input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	# Handle aiming and check for shooting input here
 	aim()
-	if Input.is_action_pressed("Fire") and can_shoot:
+	if Input.is_action_pressed("Fire") and can_shoot and not Input.is_action_pressed("Refill"):
 		shoot()
 		
-	if Input.is_action_pressed("Refill") and refill_timer.is_stopped():
+	if Input.is_action_pressed("Refill") and refill_timer.is_stopped() and not Input.is_action_pressed("Fire"):
 		refill_timer.start()
-	elif Input.is_action_just_released("Refill"):
+	elif Input.is_action_just_released("Refill") or Input.is_action_pressed("Fire"):
 		refill_timer.stop()
-	print(PlayerStats.ammo)
+	# print(PlayerStats.ammo)
 
 func _physics_process(delta: float) -> void:
 	# Get movement input direction

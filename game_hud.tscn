@@ -43,18 +43,9 @@ offset_top = -42.0
 offset_right = 200.0
 offset_bottom = -2.00003
 scale = Vector2(1.25, 1.25)
-max_value = 5.0
+max_value = 10.0
 texture_under = ExtResource("2_2uf8q")
 texture_progress = ExtResource("3_nlrtl")
-
-[node name="HealthBar" type="ProgressBar" parent="HealthLabel"]
-visible = false
-layout_mode = 0
-offset_top = -32.7869
-offset_right = 4.0
-offset_bottom = -5.78689
-value = 50.0
-show_percentage = false
 
 [node name="AmmoLabel" type="Label" parent="."]
 layout_mode = 1
@@ -82,20 +73,3 @@ max_value = 50.0
 fill_mode = 1
 texture_under = ExtResource("2_2uf8q")
 texture_progress = ExtResource("4_t6vrg")
-
-[node name="AmmoBar" type="ProgressBar" parent="AmmoLabel"]
-visible = false
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -5.2089
-offset_top = -49.8657
-offset_right = -1.2089
-offset_bottom = -22.8657
-grow_horizontal = 0
-grow_vertical = 0
-fill_mode = 1
-show_percentage = false

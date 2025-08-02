@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c1s4qfttxn56u"
+path="res://.godot/imported/Splashdown ost 1 - war_bass drum small.wav-3f28b43b8b919a14dc2a8110665a4a66.sample"
+
+[deps]
+
+source_file="res://Sound/Music/War (Foghorn)/Splashdown ost 1 - war_bass drum small.wav"
+dest_files=["res://.godot/imported/Splashdown ost 1 - war_bass drum small.wav-3f28b43b8b919a14dc2a8110665a4a66.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

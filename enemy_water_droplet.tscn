@@ -7,6 +7,7 @@
 height = 48.0
 
 [node name="WaterDroplet2" type="Area2D"]
+scale = Vector2(3.96, 3.96)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_ri8x2")

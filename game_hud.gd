@@ -10,8 +10,8 @@ func _ready():
 	PlayerStats.ammo_changed.connect(_on_ammo_changed)
 	PlayerStats.max_ammo_changed.connect(_on_max_ammo_changed)
 	
-	health_bar.value = 5
-	health_bar.max_value = 5
+	health_bar.value = 10
+	health_bar.max_value = 10
 	
 	ammo_bar.value = 50
 	ammo_bar.value = 50

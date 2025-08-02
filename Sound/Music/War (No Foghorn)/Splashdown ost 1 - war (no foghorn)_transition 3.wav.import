@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cec3jotysng7t"
+path="res://.godot/imported/Splashdown ost 1 - war (no foghorn)_transition 3.wav-615721f9e6effc0b600fc7c2902026c7.sample"
+
+[deps]
+
+source_file="res://Sound/Music/War (No Foghorn)/Splashdown ost 1 - war (no foghorn)_transition 3.wav"
+dest_files=["res://.godot/imported/Splashdown ost 1 - war (no foghorn)_transition 3.wav-615721f9e6effc0b600fc7c2902026c7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

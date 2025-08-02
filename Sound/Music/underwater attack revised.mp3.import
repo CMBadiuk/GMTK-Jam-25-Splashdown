@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://de1qcqmhj4jpp"
+path="res://.godot/imported/underwater attack revised.mp3-c3a4d78a92729f81194e9cf6715ba973.mp3str"
+
+[deps]
+
+source_file="res://Sound/Music/underwater attack revised.mp3"
+dest_files=["res://.godot/imported/underwater attack revised.mp3-c3a4d78a92729f81194e9cf6715ba973.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

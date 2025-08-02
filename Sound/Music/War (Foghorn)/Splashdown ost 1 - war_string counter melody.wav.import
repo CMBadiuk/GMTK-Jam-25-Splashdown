@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://8eww1pqypi43"
+path="res://.godot/imported/Splashdown ost 1 - war_string counter melody.wav-82c1c23f17c84705a233266773e47e56.sample"
+
+[deps]
+
+source_file="res://Sound/Music/War (Foghorn)/Splashdown ost 1 - war_string counter melody.wav"
+dest_files=["res://.godot/imported/Splashdown ost 1 - war_string counter melody.wav-82c1c23f17c84705a233266773e47e56.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cn8ftl83ro5c"]
 
 [ext_resource type="Script" uid="uid://ba5xd1jxpa2sg" path="res://main_menu.gd" id="1_7vrkn"]
-[ext_resource type="AudioStream" uid="uid://de1qcqmhj4jpp" path="res://Sound/underwater attack revised.mp3" id="2_fu7sn"]
+[ext_resource type="AudioStream" uid="uid://de1qcqmhj4jpp" path="res://Sound/Music/underwater attack revised.mp3" id="2_fu7sn"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3

@@ -7,7 +7,7 @@ signal ammo_changed(new_ammo)
 signal max_ammo_changed(new_max_ammo)
 signal player_died
 
-var max_health: int = 5
+var max_health: int = 10
 var health: int = max_health:
 	set(value):
 		health = clamp(value, 0, max_health)

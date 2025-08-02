@@ -32,6 +32,7 @@ func _physics_process(delta: float) -> void:
 	velocity *= friction
 		
 	move_and_slide()
+	look_at(player.global_position)
 	
 	# Check for collision with the player
 	for i in get_slide_collision_count():

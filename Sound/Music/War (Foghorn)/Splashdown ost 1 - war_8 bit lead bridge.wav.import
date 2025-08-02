@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://de5bctvujie8q"
+path="res://.godot/imported/Splashdown ost 1 - war_8 bit lead bridge.wav-7c3243c0c59614ea4a2ae8cf438f01d1.sample"
+
+[deps]
+
+source_file="res://Sound/Music/War (Foghorn)/Splashdown ost 1 - war_8 bit lead bridge.wav"
+dest_files=["res://.godot/imported/Splashdown ost 1 - war_8 bit lead bridge.wav-7c3243c0c59614ea4a2ae8cf438f01d1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
