@@ -3,6 +3,9 @@ extends Area2D
 @export var knockback_force: float = 800.0
 var can_splash:= true
 
+@onready var splash_sprite = $SplashSprite
+@onready var duration_timer = $DurationTimer
+
 func _ready() -> void:
 	$DurationTimer.timeout.connect(queue_free)
 	
@@ -10,6 +13,15 @@ func _physics_process(delta: float) -> void:
 	if can_splash:
 			apply_shockwave()
 			can_splash = false
+	
+	var tween = create_tween()
+	var rot_tween = create_tween()
+	
+	splash_sprite.scale = Vector2(0.1, 0.1)
+	splash_sprite.rotation = 0.0
+	
+	tween.tween_property(splash_sprite, "scale", Vector2(2, 2), duration_timer.wait_time)
+	rot_tween.tween_property(splash_sprite, "rotation", -359, duration_timer.wait_time)
 	
 func apply_shockwave():
 	# Get all nodes in the "player" and "enemies" groups.

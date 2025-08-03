@@ -2,7 +2,10 @@ extends Area2D
 
 signal wave_changed(new_wave)
 
-var counter := -1
+@onready var music_player: AudioStreamPlayer = get_node("/root/World/MusicStream")
+@onready var opening_player: AudioStreamPlayer = get_node("/root/World/OpeningStream")
+
+var counter := 0
 
 # Called when player enters wave counter
 func _on_body_entered(body: Node2D) -> void:
@@ -17,6 +20,10 @@ func _on_body_entered(body: Node2D) -> void:
 		# Update all enemy spawn points with this new wave number
 		for spawn_point in get_tree().get_nodes_in_group("spawn_point"):
 			spawn_point.set_budget_for_wave(counter)
+			
+		if counter == 1:
+			music_player.play()
+			opening_player.stop()
 
 # Returns the current wave number
 func get_current_wave() -> int:

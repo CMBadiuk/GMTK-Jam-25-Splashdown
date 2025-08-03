@@ -18,6 +18,7 @@ func attack():
 	# 1. Spawn the warning indicator.
 	var target_position = player.global_position
 	var warning = warning_indicator_scene.instantiate()
+	print("Spawning Warning")
 	get_tree().root.add_child.call_deferred(warning)
 	warning.global_position = target_position
 
@@ -27,6 +28,7 @@ func attack():
 
 	# 3. Once the warning's timer is done, spawn the splash.
 	var splash = splash_damage_scene.instantiate()
+	print("Spawning Splash")
 	get_tree().root.add_child(splash)
 	splash.global_position = target_position
 

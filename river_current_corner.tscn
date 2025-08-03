@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd00tfjd0hynr"]
+
+[ext_resource type="Script" uid="uid://b0jv7hcbsev3e" path="res://river_current.gd" id="1_q1xnt"]
+[ext_resource type="Texture2D" uid="uid://c28sbyadrvx0a" path="res://Textures/Pool Path/River3.png" id="2_f0yd8"]
+
+[node name="RiverCurrentCorner" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_q1xnt")
+current_direction = Vector2(0.5, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_f0yd8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-160, -152, 56, -152, 56, -72, 120, -8, 152, -8, 152, 200, 128, 200, 0, 160, -96, 64, -160, -40)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

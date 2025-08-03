@@ -1,5 +1,12 @@
 extends Control
 
+@onready var restart_button = $VBoxContainer/RestartButton
+
+func open_menu():
+	# This function will be called from the world when the player dies.
+	show()
+	restart_button.grab_focus()
+
 func _on_restart_button_pressed():
 	# Unpause the game and reload the current scene.
 	get_tree().paused = false

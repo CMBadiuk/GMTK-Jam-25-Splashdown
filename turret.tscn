@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://xb2hqirwpxx5"]
 
-[ext_resource type="Texture2D" uid="uid://xfkud3diitvt" path="res://icon.svg" id="1_3oylf"]
 [ext_resource type="Script" uid="uid://cc25y2tlihodb" path="res://turret.gd" id="1_tjdg3"]
 [ext_resource type="PackedScene" uid="uid://bxqilk4nwc52i" path="res://enemy_water_droplet.tscn" id="2_c5apd"]
+[ext_resource type="Texture2D" uid="uid://b0kdg6c7g51b0" path="res://Textures/Turret/Octoturret90.png" id="3_c5apd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c5apd"]
 radius = 83.8961
@@ -12,11 +12,11 @@ script = ExtResource("1_tjdg3")
 enemy_projectile_scene = ExtResource("2_c5apd")
 
 [node name="Head" type="Sprite2D" parent="."]
-modulate = Color(0, 1, 0, 1)
-texture = ExtResource("1_3oylf")
+scale = Vector2(0.34375, 0.34375)
+texture = ExtResource("3_c5apd")
 
 [node name="Muzzle" type="Marker2D" parent="Head"]
-position = Vector2(104, 0)
+position = Vector2(279.273, 0)
 
 [node name="FiringRange" type="Area2D" parent="."]
 collision_layer = 0

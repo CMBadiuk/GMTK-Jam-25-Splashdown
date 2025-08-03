@@ -8,6 +8,6 @@ func _ready():
 	lifetime_timer.timeout.connect(queue_free)
 	var tween = create_tween()
 	
-	character_sprite.scale = Vector2(2, 2)
+	character_sprite.scale = Vector2(1, 1)
 	
 	tween.tween_property(character_sprite, "scale", Vector2(0.1, 0.1), lifetime_timer.wait_time)
