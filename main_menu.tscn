@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn8ftl83ro5c"]
+[gd_scene load_steps=5 format=3 uid="uid://cn8ftl83ro5c"]
 
 [ext_resource type="Script" uid="uid://ba5xd1jxpa2sg" path="res://main_menu.gd" id="1_7vrkn"]
 [ext_resource type="AudioStream" uid="uid://de1qcqmhj4jpp" path="res://Sound/Music/underwater attack revised.mp3" id="2_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://dnssd4qvxhjul" path="res://Textures/SplashdownLogo.png" id="2_jix8l"]
+[ext_resource type="Texture2D" uid="uid://b2k44i386ty2i" path="res://Textures/AphelionEnt-Logo.png" id="3_jix8l"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -13,6 +15,7 @@ grow_vertical = 2
 script = ExtResource("1_7vrkn")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -30,6 +33,16 @@ text = "SPLASHDOWN"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="LogoSprite" type="Sprite2D" parent="."]
+position = Vector2(960, 568)
+scale = Vector2(1.56, 1.56)
+texture = ExtResource("2_jix8l")
+
+[node name="AphelionEnt-logo" type="Sprite2D" parent="."]
+position = Vector2(216, 872)
+scale = Vector2(0.160001, 0.160001)
+texture = ExtResource("3_jix8l")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -37,23 +50,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -68.0
-offset_top = -68.0
-offset_right = 28.0
-offset_bottom = 33.0
+offset_left = -100.0
+offset_top = -65.0
+offset_right = 100.0
+offset_bottom = 65.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Start Game"
 
 [node name="ControlsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Controls"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Credits"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Quit Game"
 
 [node name="ControlsScreen" type="Control" parent="."]
@@ -67,7 +88,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="ControlsScreen"]
+[node name="Panel2" type="Panel" parent="ControlsScreen"]
 layout_mode = 0
 offset_left = -576.0
 offset_top = -324.0
@@ -75,15 +96,18 @@ offset_right = -64.0
 offset_bottom = -4.0
 scale = Vector2(2.28, 2.08)
 
-[node name="Label" type="Label" parent="ControlsScreen/Panel"]
+[node name="ControlsLabel" type="Label" parent="ControlsScreen/Panel2"]
 layout_mode = 1
-anchors_preset = 4
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 154.386
-offset_top = -71.5384
-offset_right = 454.386
-offset_bottom = 29.4616
+offset_left = -91.0877
+offset_top = -63.8462
+offset_right = 208.912
+offset_bottom = 63.1538
+grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.576923, 0.576923)
 text = "Controls: 
@@ -94,6 +118,59 @@ Refill - Hold R / RB"
 vertical_alignment = 1
 
 [node name="BackButton" type="Button" parent="ControlsScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = 52.0
+offset_right = 21.0
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+
+[node name="CreditsScreen" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CreditsScreen"]
+layout_mode = 0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -64.0
+offset_bottom = -4.0
+scale = Vector2(2.28, 2.08)
+
+[node name="CreditsLabel" type="Label" parent="CreditsScreen/Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 157.895
+offset_top = -83.0769
+offset_right = 465.895
+offset_bottom = 43.9231
+grow_vertical = 2
+scale = Vector2(0.576923, 0.576923)
+text = "Aphelion Entertainment
+
+Programming: Caleb Badick, Sara Affara
+Art and Design: Scyghost, Rift
+Music and Sound: 2tea, Clem"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsBackButton" type="Button" parent="CreditsScreen"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -115,5 +192,7 @@ autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="ControlsScreen/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="CreditsScreen/CreditsBackButton" to="." method="_on_credback_button_pressed"]
