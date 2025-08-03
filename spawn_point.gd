@@ -5,6 +5,12 @@ var wave = 0
 enum SpawnTypes { LAND, WATER }
 @export var spawn_type: SpawnTypes
 
+# range variables for spawn point locations
+@export var move_radius_x: float = 500.0 # max x-range
+@export var move_radius_y: float = 500.0 # max y-range
+@export var allowed_area: Area2D # assign in inspector
+var original_position: Vector2 # original position
+
 # Define enemies with a cost and weight
 # Higher weight = more frequent
 # Higher cost = more expensive to spawn
@@ -67,11 +73,49 @@ func spawn_next_enemy() -> void:
 # called when this node enters the scene tree
 func _ready() -> void:
 	randomize()
+	original_position = global_position
+	
+func is_point_inside_area(point: Vector2) -> bool:
+	# checks if spawn point is in it's allowed area based off its type
+	var space_state = get_world_2d().direct_space_state
+	var params = PhysicsPointQueryParameters2D.new()
+	params.position = point
+	params.collide_with_areas = true
+	params.collide_with_bodies = false
+	params.collision_mask = allowed_area.collision_layer  # use the allowed area's layer
+
+	var results = space_state.intersect_point(params, 10)
+
+	for item in results:
+		if item.collider == allowed_area:
+			return true
+	return false
+	
 
 # called externally to update per wave
 func set_budget_for_wave(new_wave: int) -> void:
 	wave = new_wave
-	enemy_budget = wave * 2
+	enemy_budget = wave * 3
+	
+	var valid = false
+	var attempt = 0
+	
+	while not valid and attempt < 20:
+		attempt += 1
+		var offset_x = randf_range(-move_radius_x, move_radius_x)
+		var offset_y = randf_range(-move_radius_y, move_radius_y)
+		var candidate_pos = original_position + Vector2(offset_x, offset_y)
+		
+		global_position = candidate_pos # temporarily move
+		
+		# wait for physics to update areas
+		if is_point_inside_area(candidate_pos):
+			global_position = candidate_pos
+			valid = true
+			
+	if not valid:
+		global_position = original_position # return to original position
+
 	spawn_next_enemy()
 	print("Enemy Budget: ", enemy_budget)
 
@@ -85,3 +129,4 @@ func get_min_enemy_cost() -> int:
 		for enemy in enemies_water:
 			min_cost = min(min_cost, enemy["cost"])
 	return min_cost
+#
