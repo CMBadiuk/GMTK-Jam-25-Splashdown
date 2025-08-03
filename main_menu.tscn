@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cn8ftl83ro5c"]
+[gd_scene load_steps=6 format=3 uid="uid://cn8ftl83ro5c"]
 
 [ext_resource type="Script" uid="uid://ba5xd1jxpa2sg" path="res://main_menu.gd" id="1_7vrkn"]
 [ext_resource type="AudioStream" uid="uid://de1qcqmhj4jpp" path="res://Sound/Music/underwater attack revised.mp3" id="2_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://ci2lb6kgybe6y" path="res://Textures/PoolTile.png" id="2_glbon"]
 [ext_resource type="Texture2D" uid="uid://dnssd4qvxhjul" path="res://Textures/SplashdownLogo.png" id="2_jix8l"]
 [ext_resource type="Texture2D" uid="uid://b2k44i386ty2i" path="res://Textures/AphelionEnt-Logo.png" id="3_jix8l"]
 
@@ -13,6 +14,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7vrkn")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_glbon")
+stretch_mode = 1
 
 [node name="Label" type="Label" parent="."]
 visible = false

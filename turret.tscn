@@ -42,5 +42,6 @@ one_shot = true
 
 [node name="Bubble" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("4_coqkk")
+volume_db = 8.0
 
 [connection signal="area_entered" from="DamageCollider" to="." method="_on_damage_collider_area_entered"]
