@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://duprj2epfk8jx"]
+[gd_scene load_steps=3 format=3 uid="uid://duprj2epfk8jx"]
 
 [ext_resource type="Script" uid="uid://b5cfjkqfpgg46" path="res://spawn_point.gd" id="1_00gca"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_00gca"]
+radius = 1.0
+
 [node name="SpawnPoint" type="Node2D" groups=["spawn_point"]]
 script = ExtResource("1_00gca")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_00gca")

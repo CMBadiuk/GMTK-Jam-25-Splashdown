@@ -1,15 +1,15 @@
 [gd_scene load_steps=13 format=3 uid="uid://cr75xubf3ymsk"]
 
 [ext_resource type="PackedScene" uid="uid://ckwn072cvvxnx" path="res://player.tscn" id="1_2dftf"]
-[ext_resource type="Script" uid="uid://uxffqmy84r6c" path="res://world.gd" id="1_fv4w7"]
+[ext_resource type="Script" path="res://world.gd" id="1_fv4w7"]
 [ext_resource type="PackedScene" uid="uid://crseh7g7s6ifg" path="res://river_current.tscn" id="2_bcbcq"]
-[ext_resource type="PackedScene" uid="uid://u8hl5u5ma3xq" path="res://wave_counter.tscn" id="2_f5c0m"]
-[ext_resource type="Script" path="res://river_currents.gd" id="2_p1v5b"]
+[ext_resource type="PackedScene" uid="uid://bjw4wekrxr8ne" path="res://wave_counter.tscn" id="2_f5c0m"]
+[ext_resource type="Script" uid="uid://bojrycaqjoexf" path="res://river_currents.gd" id="2_p1v5b"]
 [ext_resource type="Texture2D" uid="uid://caohu6l23fm0u" path="res://Textures/Pool Path/River6.png" id="4_fvag4"]
 [ext_resource type="Texture2D" uid="uid://brmr3ch8d7pg" path="res://Textures/GMTK25-BackgroundPlaceholder.jpg" id="6_p1v5b"]
 [ext_resource type="PackedScene" uid="uid://cvgn0pkfdfsvd" path="res://game_hud.tscn" id="7_bah7m"]
 [ext_resource type="PackedScene" uid="uid://cdyjrifsksata" path="res://game_over_screen.tscn" id="9_fvag4"]
-[ext_resource type="PackedScene" path="res://spawn_point.tscn" id="11_kva58"]
+[ext_resource type="PackedScene" uid="uid://duprj2epfk8jx" path="res://spawn_point.tscn" id="11_kva58"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dftf"]
 size = Vector2(1905.21, 79.6044)
@@ -24,20 +24,33 @@ script = ExtResource("1_fv4w7")
 
 [node name="SpawnPoints" type="Node" parent="."]
 
-[node name="SpawnPoint" parent="SpawnPoints" instance=ExtResource("11_kva58")]
+[node name="SpawnPoint" parent="SpawnPoints" node_paths=PackedStringArray("allowed_area") instance=ExtResource("11_kva58")]
 position = Vector2(2928, -1111)
+rotation = 0.463478
 spawn_type = 1
+allowed_area = NodePath("../../WaterArea")
 
-[node name="SpawnPoint2" parent="SpawnPoints" instance=ExtResource("11_kva58")]
-position = Vector2(173, -1713)
+[node name="SpawnPoint2" parent="SpawnPoints" node_paths=PackedStringArray("allowed_area") instance=ExtResource("11_kva58")]
+position = Vector2(173, -1571)
 spawn_type = 1
+move_radius_x = 1000.0
+move_radius_y = 1000.0
+allowed_area = NodePath("../../WaterArea")
 
-[node name="SpawnPoint3" parent="SpawnPoints" instance=ExtResource("11_kva58")]
-position = Vector2(-464, -264)
-spawn_type = 1
+[node name="SpawnPoint3" parent="SpawnPoints" node_paths=PackedStringArray("allowed_area") instance=ExtResource("11_kva58")]
+position = Vector2(-712, -51)
+rotation = 0.585642
+move_radius_x = 1000.0
+move_radius_y = 1000.0
+allowed_area = NodePath("../../LandArea")
 
-[node name="SpawnPoint4" parent="SpawnPoints" instance=ExtResource("11_kva58")]
+[node name="SpawnPoint4" parent="SpawnPoints" node_paths=PackedStringArray("allowed_area") instance=ExtResource("11_kva58")]
 position = Vector2(1112, 568)
+allowed_area = NodePath("../../LandArea")
+
+[node name="SpawnPoint5" parent="SpawnPoints" node_paths=PackedStringArray("allowed_area") instance=ExtResource("11_kva58")]
+position = Vector2(1010, -692)
+allowed_area = NodePath("../../LandArea")
 
 [node name="Player" parent="." instance=ExtResource("1_2dftf")]
 z_index = 1
@@ -299,3 +312,13 @@ visible = false
 [node name="WaveCounter" parent="." instance=ExtResource("2_f5c0m")]
 position = Vector2(1744, 0)
 scale = Vector2(15.72, 16.44)
+
+[node name="WaterArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WaterArea"]
+polygon = PackedVector2Array(-23, -462, -491, -779, 236, -1289, 1960, -1294, 2730, -770, 1963, -237, 256, -237, 125, 276, 2129, 276, 3427, -608, 3419, -944, 2147, -1802, 118, -1805, -1180, -940, -1174, -589, 63, 271, 205, -270)
+
+[node name="LandArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LandArea"]
+polygon = PackedVector2Array(-357, -778, 250, -1206, 1955, -1212, 2592, -764, 1932, -317, 290, -307)
