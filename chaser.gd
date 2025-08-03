@@ -13,6 +13,8 @@ var can_attack:= true
 @onready var duck_2: AudioStreamPlayer2D = $Sounds/Duck2
 @onready var duck_3: AudioStreamPlayer2D = $Sounds/Duck3
 var duck_fx = []
+@onready var quack_timer: Timer = $QuackTimer
+
 
 
 func _ready() -> void:
@@ -20,6 +22,17 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	$AttackCooldownTimer.timeout.connect(_on_attack_cooldown_timer_timeout)
 	duck_fx = [duck_1, duck_2, duck_3]
+	quack_timer.timeout.connect(_on_quack_timer_timeout)
+	start_quack_timer()
+
+func _on_quack_timer_timeout():
+	play_random_sound(duck_fx)
+	start_quack_timer()  # restart for the next quack
+
+func start_quack_timer():
+	# Random interval between quacks (adjust range to taste)
+	var delay = randf_range(2.0, 6.0)
+	quack_timer.start(delay)
 	
 func play_random_sound(players: Array) -> void:
 	if players.size() == 0:
@@ -69,6 +82,8 @@ func take_damage(amount: int):
 	health -= amount
 	print("Chaser took ", amount, " damage. Health is now ", health)
 	if health <= 0:
+		play_random_sound(duck_fx)
+		await get_tree().create_timer(0.2).timeout
 		queue_free()
 
 func _on_attack_cooldown_timer_timeout():

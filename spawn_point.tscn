@@ -1,6 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://duprj2epfk8jx"]
+[gd_scene load_steps=9 format=3 uid="uid://duprj2epfk8jx"]
 
 [ext_resource type="Script" uid="uid://b5cfjkqfpgg46" path="res://spawn_point.gd" id="1_00gca"]
+[ext_resource type="AudioStream" uid="uid://b3pv6k1i3inwp" path="res://Sound/FX/splash_3.wav" id="2_64daa"]
+[ext_resource type="AudioStream" uid="uid://bm1g55jwkfdch" path="res://Sound/FX/heavy_splash.ogg" id="3_u0vkh"]
+[ext_resource type="AudioStream" uid="uid://cqjqq8fkclr16" path="res://Sound/FX/duck_1.wav" id="4_h0nvl"]
+[ext_resource type="AudioStream" uid="uid://dxnlb1egfkex2" path="res://Sound/FX/duck_2.wav" id="5_olhrr"]
+[ext_resource type="AudioStream" uid="uid://b3u01kayroalg" path="res://Sound/FX/bubble_up_1.wav" id="6_6ssqa"]
+[ext_resource type="AudioStream" uid="uid://cf052txxw4ydw" path="res://Sound/FX/bubble_up_2.wav" id="7_qrgqv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_00gca"]
 radius = 1.0
@@ -12,3 +18,29 @@ script = ExtResource("1_00gca")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("CircleShape2D_00gca")
+
+[node name="SpawnSounds" type="Node2D" parent="."]
+
+[node name="Splash" type="AudioStreamPlayer2D" parent="SpawnSounds"]
+stream = ExtResource("2_64daa")
+volume_db = -6.0
+
+[node name="Splash2" type="AudioStreamPlayer2D" parent="SpawnSounds"]
+stream = ExtResource("3_u0vkh")
+volume_db = -6.0
+
+[node name="Duck1" type="AudioStreamPlayer2D" parent="SpawnSounds"]
+stream = ExtResource("4_h0nvl")
+volume_db = -6.0
+
+[node name="Duck2" type="AudioStreamPlayer2D" parent="SpawnSounds"]
+stream = ExtResource("5_olhrr")
+volume_db = -6.0
+
+[node name="Bubble1" type="AudioStreamPlayer2D" parent="SpawnSounds"]
+stream = ExtResource("6_6ssqa")
+volume_db = -6.0
+
+[node name="Bubble2" type="AudioStreamPlayer2D" parent="SpawnSounds"]
+stream = ExtResource("7_qrgqv")
+volume_db = -6.0

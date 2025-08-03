@@ -38,3 +38,6 @@ volume_db = -16.0
 [node name="Duck3" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("5_0qdm0")
 volume_db = -16.0
+
+[node name="QuackTimer" type="Timer" parent="."]
+one_shot = true

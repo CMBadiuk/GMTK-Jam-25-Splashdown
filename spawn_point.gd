@@ -11,6 +11,24 @@ enum SpawnTypes { LAND, WATER }
 @export var allowed_area: Area2D # assign in inspector
 var original_position: Vector2 # original position
 
+# spawn sounds
+
+# cannonballer
+@onready var splash: AudioStreamPlayer2D = $SpawnSounds/Splash
+@onready var splash_2: AudioStreamPlayer2D = $SpawnSounds/Splash2
+var splash_fx = []
+
+# duck
+@onready var duck_1: AudioStreamPlayer2D = $SpawnSounds/Duck1
+@onready var duck_2: AudioStreamPlayer2D = $SpawnSounds/Duck2
+var duck_fx
+
+# turret
+@onready var bubble_1: AudioStreamPlayer2D = $SpawnSounds/Bubble1
+@onready var bubble_2: AudioStreamPlayer2D = $SpawnSounds/Bubble2
+var turret_fx = []
+
+
 # Define enemies with a cost and weight
 # Higher weight = more frequent
 # Higher cost = more expensive to spawn
@@ -23,6 +41,15 @@ var enemies_land = [
 	{"scene": preload("res://turret.tscn"), "cost": 2, "weight": 1},   # rare enemy
 ]
 
+# randomly select a sound to play
+func play_random_sound(players: Array) -> void:
+	if players.size() == 0:
+		print("No AudioStreamPlayer nodes provided")
+		return
+		
+	var random_index = randi() % players.size()
+	players[random_index].play()
+	
 # Weighted random enemy selection
 func choose_enemy_weighted() -> Dictionary:
 	var chosen_enemy
@@ -74,6 +101,9 @@ func spawn_next_enemy() -> void:
 func _ready() -> void:
 	randomize()
 	original_position = global_position
+	splash_fx = [splash, splash_2]
+	duck_fx = [duck_1, duck_2]
+	turret_fx = [bubble_1, bubble_2]
 	
 func is_point_inside_area(point: Vector2) -> bool:
 	# checks if spawn point is in it's allowed area based off its type
