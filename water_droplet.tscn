@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://ofsv5lr2t6pg"]
+[gd_scene load_steps=7 format=3 uid="uid://ofsv5lr2t6pg"]
 
 [ext_resource type="Script" uid="uid://siy60m7psp76" path="res://water_droplet.gd" id="1_h1mwo"]
 [ext_resource type="Texture2D" uid="uid://deuxoea58c2dl" path="res://Textures/GMTK25-WaterPlaceholder.png" id="2_h1mwo"]
+[ext_resource type="AudioStream" uid="uid://b3u01kayroalg" path="res://Sound/FX/bubble_up_1.wav" id="3_pqku0"]
+[ext_resource type="AudioStream" uid="uid://cf052txxw4ydw" path="res://Sound/FX/bubble_up_2.wav" id="4_v4wsy"]
+[ext_resource type="AudioStream" uid="uid://cl2oxlejdo0hc" path="res://Sound/FX/splash_2.wav" id="5_8ewqq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h1mwo"]
 height = 48.0
@@ -24,6 +27,19 @@ shape = SubResource("CapsuleShape2D_h1mwo")
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="SpawnSound1" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("3_pqku0")
+volume_db = -6.0
+
+[node name="SpawnSound2" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("4_v4wsy")
+
+[node name="SpawnSound3" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("5_8ewqq")
+volume_db = -6.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

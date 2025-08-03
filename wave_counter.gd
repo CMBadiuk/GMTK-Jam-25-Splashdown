@@ -7,6 +7,17 @@ signal wave_changed(new_wave)
 
 var counter := 0
 
+#func _ready():
+	#spawn_fx = [spawn_sound_1, spawn_sound_2, spawn_sound_3]
+	
+func play_random_sound(players: Array) -> void:
+	if players.size() == 0:
+		print("No AudioStreamPlayer nodes provided")
+		return
+		
+	var random_index = randi() % players.size()
+	players[random_index].play()
+	
 # Called when player enters wave counter
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):

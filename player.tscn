@@ -1,8 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckwn072cvvxnx"]
+[gd_scene load_steps=11 format=3 uid="uid://ckwn072cvvxnx"]
 
 [ext_resource type="Script" uid="uid://c7r8qm2lji5hn" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://ofsv5lr2t6pg" path="res://water_droplet.tscn" id="2_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://doff8hwd78pus" path="res://Textures/Player/Illustration2.png" id="3_i3pqv"]
+[ext_resource type="AudioStream" uid="uid://bswd2q4vmo0ke" path="res://Sound/FX/water_gun_1.wav" id="4_2hs0m"]
+[ext_resource type="AudioStream" uid="uid://c4ojrpqkde2xx" path="res://Sound/FX/water_gun_2.wav" id="5_1jxqw"]
+[ext_resource type="AudioStream" uid="uid://cybxeq4ktbjte" path="res://Sound/FX/spray_1.wav" id="6_dw050"]
+[ext_resource type="AudioStream" uid="uid://ddnabpr6qotw5" path="res://Sound/FX/swim5.ogg" id="7_1jxqw"]
+[ext_resource type="AudioStream" uid="uid://dp4xm4x53tipb" path="res://Sound/FX/water.ogg" id="8_dw050"]
+[ext_resource type="AudioStream" uid="uid://dcd2itvv1chks" path="res://Sound/FX/swim15.ogg" id="9_b26j0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 56.0
@@ -36,5 +42,39 @@ one_shot = true
 
 [node name="RefillTimer" type="Timer" parent="."]
 wait_time = 0.1
+
+[node name="SwimSoundTimer" type="Timer" parent="."]
+wait_time = 3.248
+one_shot = true
+
+[node name="SoundEffects" type="Node2D" parent="."]
+
+[node name="WaterGuns" type="Node2D" parent="SoundEffects"]
+
+[node name="WaterGun1" type="AudioStreamPlayer2D" parent="SoundEffects/WaterGuns" groups=["WaterGun"]]
+stream = ExtResource("4_2hs0m")
+volume_db = -6.0
+
+[node name="WaterGun2" type="AudioStreamPlayer2D" parent="SoundEffects/WaterGuns" groups=["WaterGun"]]
+stream = ExtResource("5_1jxqw")
+volume_db = -6.0
+
+[node name="SprayGun" type="AudioStreamPlayer2D" parent="SoundEffects/WaterGuns" groups=["WaterGun"]]
+stream = ExtResource("6_dw050")
+volume_db = -6.0
+
+[node name="Swim" type="Node2D" parent="SoundEffects"]
+
+[node name="Swim1" type="AudioStreamPlayer2D" parent="SoundEffects/Swim"]
+stream = ExtResource("7_1jxqw")
+volume_db = -20.0
+
+[node name="Swim2" type="AudioStreamPlayer2D" parent="SoundEffects/Swim"]
+stream = ExtResource("8_dw050")
+volume_db = -6.0
+
+[node name="Swim3" type="AudioStreamPlayer2D" parent="SoundEffects/Swim"]
+stream = ExtResource("9_b26j0")
+volume_db = -10.0
 
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

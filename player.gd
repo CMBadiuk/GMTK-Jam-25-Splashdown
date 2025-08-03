@@ -12,6 +12,20 @@ enum ControlScheme { MOUSE_KB, CONTROLLER }
 # @export var health: int = 5
 
 @onready var refill_timer = $RefillTimer
+@onready var swim_timer = $SwimSoundTimer
+
+# sounds:
+@onready var audio_player = $AudioStreamPlayer
+#water guns:
+@onready var water_gun_1: AudioStreamPlayer2D = $SoundEffects/WaterGuns/WaterGun1
+@onready var water_gun_2: AudioStreamPlayer2D = $SoundEffects/WaterGuns/WaterGun2
+var water_gun_fx = []
+@onready var swim_1: AudioStreamPlayer2D = $SoundEffects/Swim/Swim1
+@onready var swim_2: AudioStreamPlayer2D = $SoundEffects/Swim/Swim2
+@onready var swim_3: AudioStreamPlayer2D = $SoundEffects/Swim/Swim3
+
+var swim_fx = []
+
 
 var can_shoot:= true
 var active_scheme: ControlScheme = ControlScheme.MOUSE_KB
@@ -20,6 +34,17 @@ var last_controller_aim := Vector2.RIGHT # Default aim for controller
 func _ready():
 	$DamageFlashTimer.timeout.connect(_on_damage_flash_timer_timeout)
 	refill_timer.timeout.connect(_on_refill_timer_timeout)
+	water_gun_fx = [water_gun_1, water_gun_2]
+	swim_fx = [swim_1, swim_2, swim_3]
+	
+# randomly select a sound to play
+func play_random_sound(players: Array) -> void:
+	if players.size() == 0:
+		print("No AudioStreamPlayer nodes provided")
+		return
+		
+	var random_index = randi() % players.size()
+	players[random_index].play()
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Runs whenever there's an input event, used to detect last used input device
@@ -51,6 +76,13 @@ func _physics_process(delta: float) -> void:
 	# Apply friction to velocity
 	velocity *= friction
 
+	# Play swim sound every time timer times out
+	if !swim_timer.is_stopped():
+		pass  # already running
+	else:
+		play_random_sound(swim_fx)
+		swim_timer.start()
+		
 	# Move player based on physics inputs acting on it
 	move_and_slide()
 
@@ -95,6 +127,8 @@ func shoot() -> void:
 	$FireRateTimer.start()
 	PlayerStats.ammo -= 1
 
+	play_random_sound(water_gun_fx)
+	
 	# Create a new instance of our water droplet, parent it to world root
 	var droplet = water_droplet_scene.instantiate()
 	get_tree().root.add_child(droplet)
