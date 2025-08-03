@@ -8,10 +8,26 @@ extends CharacterBody2D
 var player: Node2D
 var can_attack:= true
 
+# sounds:
+@onready var duck_1: AudioStreamPlayer2D = $Sounds/Duck1
+@onready var duck_2: AudioStreamPlayer2D = $Sounds/Duck2
+@onready var duck_3: AudioStreamPlayer2D = $Sounds/Duck3
+var duck_fx = []
+
+
 func _ready() -> void:
 	# Find player as soon as they're spawned
 	player = get_tree().get_first_node_in_group("player")
 	$AttackCooldownTimer.timeout.connect(_on_attack_cooldown_timer_timeout)
+	duck_fx = [duck_1, duck_2, duck_3]
+	
+func play_random_sound(players: Array) -> void:
+	if players.size() == 0:
+		print("No AudioStreamPlayer nodes provided")
+		return
+		
+	var random_index = randi() % players.size()
+	players[random_index].play()
 	
 func _physics_process(delta: float) -> void:
 	if not is_instance_valid(player):
@@ -41,6 +57,7 @@ func _physics_process(delta: float) -> void:
 		if collider.is_in_group("player"):
 			print("Chaser caught the player!")
 			collider.take_damage(1)
+			play_random_sound(duck_fx)
 			# Bounce back
 			velocity += collision.get_normal() * bounce_force
 			print("Velocity = ", velocity)

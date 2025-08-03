@@ -62,7 +62,7 @@ func spawn_next_enemy() -> void:
 	var instance = enemy["scene"].instantiate()
 	get_tree().current_scene.call_deferred("add_child", instance)
 	instance.global_position = global_position  # Spawns at this spawn point
-
+	
 	enemy_budget -= enemy["cost"] # deduct cost of enemy from spawn point budget after spawned
 
 	# wait randomly before next spawn

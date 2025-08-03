@@ -8,6 +8,8 @@ var can_shoot := true
 
 @onready var head = $Head
 @onready var fire_rate_timer = $FireRateTimer
+# sound
+@onready var bubble: AudioStreamPlayer2D = $Sounds/Bubble
 
 func _ready():
 	# Connect signals from the detection area and timer
@@ -29,6 +31,8 @@ func shoot():
 
 	can_shoot = false
 	fire_rate_timer.start()
+	
+	bubble.play()
 
 	var projectile = enemy_projectile_scene.instantiate()
 	get_tree().root.add_child(projectile)
