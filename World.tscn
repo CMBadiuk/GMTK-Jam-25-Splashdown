@@ -1,9 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://cr75xubf3ymsk"]
+[gd_scene load_steps=17 format=3 uid="uid://cr75xubf3ymsk"]
 
 [ext_resource type="PackedScene" uid="uid://ckwn072cvvxnx" path="res://player.tscn" id="1_2dftf"]
 [ext_resource type="Script" uid="uid://uxffqmy84r6c" path="res://world.gd" id="1_fv4w7"]
 [ext_resource type="PackedScene" uid="uid://bjw4wekrxr8ne" path="res://wave_counter.tscn" id="2_f5c0m"]
-[ext_resource type="Script" path="res://river_currents.gd" id="2_p1v5b"]
+[ext_resource type="Script" uid="uid://bojrycaqjoexf" path="res://river_currents.gd" id="2_p1v5b"]
 [ext_resource type="PackedScene" uid="uid://d1pl6aahas7gb" path="res://river_current_straight.tscn" id="6_f5c0m"]
 [ext_resource type="Texture2D" uid="uid://ci2lb6kgybe6y" path="res://Textures/PoolTile.png" id="7_b2ar6"]
 [ext_resource type="PackedScene" uid="uid://cvgn0pkfdfsvd" path="res://game_hud.tscn" id="7_bah7m"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://duprj2epfk8jx" path="res://spawn_point.tscn" id="11_kva58"]
 [ext_resource type="AudioStream" uid="uid://0s2kgperxkgx" path="res://Sound/Music/Shoppe/Splashdown ost 2 - shoppe_Master.mp3" id="12_f5c0m"]
 [ext_resource type="PackedScene" uid="uid://u33oajniruc8" path="res://river_current_wobble.tscn" id="14_gn8l5"]
+[ext_resource type="PackedScene" uid="uid://cumfs6lmc5q0h" path="res://dialogue_box.tscn" id="15_gn8l5"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_eu7l1"]
 vertices = PackedVector2Array(4853.94, -1974, 4838.03, -1273.69, 4664.01, -743.742, 4120, -1408, 4112, -2040, 4544.69, -2671.81, 4012.71, -2838.55, 3552, -2224, 3098.69, -2806, 3496.88, -3036.94, 3264, -2088, 1969.42, -2806, 1848, -2104, 1312, -2368, 1088, -2728, 3912, -1216, 3942.29, -482.008, 3178.63, -490.063, 2560, -888, 2904, -1120, 3304, -1232, 2344, -464, 2016, -400, 2785.49, 111.68, 2286.27, 286, -479.273, 301.992, 248, -392, -552, -408, -938.141, 230.789, -1358.09, -395.172, 1616.51, -3624.1, 1080, -3104, -413.922, -3893.98, 910.156, -3886.01, -376, -3128, -935.844, -3664.65, -880.93, -2447.77, -1165.13, -2945.14, -352, -2936, -365.422, -2214.19, 248, -2600, 336, -2016, -382.656, -2016.01, 72, -1416, -552, -1352, -1033.1, -1855.4, -1381.92, -1149.83)
@@ -267,3 +268,5 @@ position = Vector2(3664, -2600)
 rotation = 3.14159
 scale = Vector2(2, 2)
 current_direction = Vector2(-1, 0)
+
+[node name="DialogueBox" parent="." instance=ExtResource("15_gn8l5")]

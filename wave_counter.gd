@@ -4,6 +4,12 @@ signal wave_changed(new_wave)
 
 @onready var music_player: AudioStreamPlayer = get_node("/root/World/MusicStream")
 @onready var opening_player: AudioStreamPlayer = get_node("/root/World/OpeningStream")
+@onready var dialogue_box: CanvasLayer = get_node("/root/World/DialogueBox")
+
+var wave_dialogue: Array[String] = [
+	"Just had to say something...",
+	"But I'm ready! Just try to take me down, evil floaties!"
+]
 
 var counter := 0
 
@@ -35,6 +41,7 @@ func _on_body_entered(body: Node2D) -> void:
 		if counter == 1:
 			music_player.play()
 			opening_player.stop()
+			dialogue_box.start_dialogue(wave_dialogue)
 
 # Returns the current wave number
 func get_current_wave() -> int:

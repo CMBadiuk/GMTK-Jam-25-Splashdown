@@ -15,7 +15,7 @@ enum ControlScheme { MOUSE_KB, CONTROLLER }
 @onready var swim_timer = $SwimSoundTimer
 
 # sounds:
-@onready var audio_player = $AudioStreamPlayer
+# @onready var audio_player = $AudioStreamPlayer
 #water guns:
 @onready var water_gun_1: AudioStreamPlayer2D = $SoundEffects/WaterGuns/WaterGun1
 @onready var water_gun_2: AudioStreamPlayer2D = $SoundEffects/WaterGuns/WaterGun2
