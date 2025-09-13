@@ -10,9 +10,18 @@ extends Control
 @onready var game_logo = $LogoSprite
 @onready var company_logo = $"AphelionEnt-logo"
 
+var intro_tween: Tween # To hold the active tween
+
 func _ready() -> void:
 	# start_button.grab_focus()
 	play_intro_animation()
+	
+func _unhandled_input(event: InputEvent):
+	# If the intro tween is running and the player hits accept...
+	if event.is_action_pressed("ui_accept") and is_instance_valid(intro_tween):
+		# ...kill the tween and call a function to force the final state.
+		intro_tween.kill()
+		_set_to_end_state()
 
 func _on_start_button_pressed() -> void:
 	SceneManager.goto_scene("res://World.tscn")
@@ -74,20 +83,22 @@ func play_intro_animation():
 	company_logo.modulate.a = 0.0
 	start_button.focus_mode = Control.FOCUS_NONE
 	
-	var tween = create_tween()
-	tween.tween_property(background, "modulate:a", 1.0, 2.0)
+	intro_tween = create_tween().set_parallel(false) # Makes the tween run in sequence
+	intro_tween.tween_property(background, "modulate:a", 1.0, 2.0)
+	intro_tween.tween_property(game_logo, "modulate:a", 1.0, 1.0)
+	intro_tween.tween_property(menu_vbox, "modulate:a", 1.0, 1.0)
 	
-	await tween.finished
+	await intro_tween.finished
+
+	if is_instance_valid(intro_tween):
+		_set_to_end_state()
+		
+func _set_to_end_state():
+	intro_tween = null
 	
-	await get_tree().create_timer(2.0).timeout
-	
-	tween = create_tween()
-	tween.tween_property(game_logo, "modulate:a", 1.0, 1.0)
-	
-	var tween2 = create_tween()
-	tween2.tween_property(menu_vbox, "modulate:a", 1.0, 1.0)
-	
-	await tween.finished
+	background.modulate.a = 1.0
+	menu_vbox.modulate.a = 1.0
+	game_logo.modulate.a = 1.0
 	
 	start_button.focus_mode = Control.FOCUS_ALL
 	start_button.grab_focus()

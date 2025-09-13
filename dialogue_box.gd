@@ -7,6 +7,7 @@ signal dialogue_finished
 
 var dialogue_lines: Array[String] = []
 var current_line_index := 0
+var typewrite_tween: Tween # To store active typewriter tween
 
 func _ready() -> void:
 	hide()
@@ -18,13 +19,17 @@ func start_dialogue(lines: Array[String]):
 	_show_next_line()
 	
 func _unhandled_input(event: InputEvent) -> void:
-	if not is_visible():
+	if not is_visible() or not event.is_action_pressed("ui_accept"):
 		return
 		
 	# Check if the text has finished typing
-	if text_label.get_total_character_count() == text_label.visible_characters:
-		if event.is_action_pressed("ui_accept"):
-			_show_next_line()
+	if is_instance_valid(typewrite_tween):
+		typewrite_tween.kill()
+		typewrite_tween = null
+		text_label.visible_characters = len(text_label.text)
+		continue_prompt.show()
+	elif text_label.get_total_character_count() == text_label.visible_characters:
+		_show_next_line()
 			
 func _show_next_line():
 	if current_line_index >= dialogue_lines.size():
@@ -40,8 +45,13 @@ func _show_next_line():
 	text_label.text = line
 	text_label.visible_characters = 0
 	
-	var tween = create_tween()
-	tween.tween_property(text_label, "visible_characters", len(line), len(line) * 0.05)
+	# Kill any previous tween just in case, then create and store the new one
+	if is_instance_valid(typewrite_tween):
+		typewrite_tween.kill()
+	typewrite_tween = create_tween()
 	
-	await tween.finished
+	typewrite_tween.tween_property(text_label, "visible_characters", len(line), len(line) * 0.05)
+	
+	await typewrite_tween.finished
+	typewrite_tween = null
 	continue_prompt.show()
